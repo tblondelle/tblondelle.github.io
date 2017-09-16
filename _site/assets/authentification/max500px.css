@@ -1,0 +1,36 @@
+h2{
+    font-weight: bold;
+}
+body{
+    margin: 0;
+    font-family: 'Roboto Slab', serif;
+    /*font-family: 'Open Sans', sans-serif;*/
+    background-color: grey;
+}
+
+#escape_button{
+    padding: 15px;
+} 
+
+#escape_button a{
+    color: white
+} 
+div[role=dialog]{
+    width: 80%;
+    height: 90%;
+    
+    margin: auto;
+    margin-top: 5%;
+    padding: 20px;
+    background-color: white;
+    overflow-y: auto;
+    box-shadow: 0 0 20px black;
+    
+    text-align: center;
+}
+
+
+
+#authentification{
+}
+
