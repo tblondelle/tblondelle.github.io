@@ -3,20 +3,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-<link rel="stylesheet" href="{{ "/css/main_style.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ "/css/main_style.css" | prepend: site.baseurl }}">
   <link rel="stylesheet" media="(max-width: 500px)" href="{{ "/css/max500px.css" | prepend: site.baseurl }}">
   <link rel="stylesheet" media="(min-width: 500px)" href="{{ "/css/min500px.css" | prepend: site.baseurl }}">
   <link href="https://fonts.googleapis.com/css?family=Lora|Cinzel" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
   <link rel="icon" type="image/png" href="{{site.github.url}}/images/favicon.PNG">
 
-
-<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Global Site Tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106598446-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-106598446-1');
+  </script>
 </head>
