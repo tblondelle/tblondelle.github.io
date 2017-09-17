@@ -15,9 +15,11 @@
   <link rel="stylesheet" media="(min-width: 500px)" href="/css/min500px.css">
   <link href="https://fonts.googleapis.com/css?family=Lora|Cinzel" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
-  
-<!--<link rel="canonical" href="http://localhost:4000/experiments/">
-  <link rel="alternate" type="application/rss+xml" title="Your awesome title" href="http://localhost:4000/feed.xml">-->
+  <link rel="icon" type="image/png" href="/favicon.PNG">
+
+
+<link rel="canonical" href="http://localhost:4000/experiments/">
+  <link rel="alternate" type="application/rss+xml" title="Your awesome title" href="http://localhost:4000/feed.xml">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -49,7 +51,9 @@
 
 <h3> 1. Authentification</h3>
 
-<p>I implemented recently an authentification page for a GitHub Pages. The tricky part is that it is meant to accept only static files and every file is public. So how can "secrets" be kept on GitHub Pages? I crypted my "secret" data into a series of integers that can be decrypted with my username and my password (look at the code, and you'll see it is in fact one concatenated field). The cryptographic algorithm I used ("AES-CBC", 128 bits) is rather weak but I can increase the key size rather easily.</p>
+<p>I recently implemented an authentification page for a GitHub Pages website. The tricky part is that you normally need a server to send you the message once the username and password have been accepted. GitHub Pages only offers a static website, thus preventing any dynamic response of private data. </p>
+
+<p> To go around the problem, I crypted my secret data into a JavaScript file as a series of integers. You can actually see the whole process for the decryption but you miss the private key, which can be recovered with my username and password. The cryptographic algorithm I used ("AES-CBC", 128 bits) is rather weak but I can increase the key size rather easily.</p>
 
 <p>The technology I used is the Web Crypto API, which crypts your data directly in JavaScript. This video was useful indeed <a href="https://www.youtube.com/watch?v=rUi1j1NhGow">[link]</a>.</p>
 

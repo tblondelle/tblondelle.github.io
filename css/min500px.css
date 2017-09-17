@@ -1,7 +1,12 @@
+html{
+ overflow-y: scroll;
+}
+
+
 body {
     margin: 0;
     font-family: 'Lora', serif;
-    font-size: 18px
+    font-size: 18px;
 }
 
 main{
