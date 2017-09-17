@@ -7,11 +7,12 @@
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+<link rel="stylesheet" href="{{ "/css/main_style.css" | prepend: site.baseurl }}">
   <link rel="stylesheet" media="(max-width: 500px)" href="{{ "/css/max500px.css" | prepend: site.baseurl }}">
   <link rel="stylesheet" media="(min-width: 500px)" href="{{ "/css/min500px.css" | prepend: site.baseurl }}">
   <link href="https://fonts.googleapis.com/css?family=Lora|Cinzel" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
-  <link rel="icon" type="image/png" href="{{site.github.url}}/favicon.PNG">
+  <link rel="icon" type="image/png" href="{{site.github.url}}/images/favicon.PNG">
 
 
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">

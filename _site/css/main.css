@@ -277,7 +277,8 @@ pre {
 
 .post-meta {
   font-size: 14px;
-  color: #828282; }
+  color: #828282;
+  margin-top: -10px; }
 
 .post-link {
   display: block;

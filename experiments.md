@@ -15,7 +15,7 @@ permalink: /experiments/
 <p>The technology I used is the Web Crypto API, which crypts your data directly in JavaScript. This video was useful indeed <a href="https://www.youtube.com/watch?v=rUi1j1NhGow">[link]</a>.</p>
 
 <p> Try decrypting my implementation and drop me an email if you crack it!</p>
-
+<br>
 <div class='center'>
 <a class='button' href="{{site.github.url}}/experiments/authentification/">Go now!</a> 
 </div>

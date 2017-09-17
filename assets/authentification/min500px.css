@@ -10,10 +10,15 @@ body{
 
 #escape_button{
     padding: 15px;
+    text-shadow: 0 0 5px #000000;
 } 
 
 #escape_button a{
-    color: white
+    color: white;
+} 
+
+#escape_button a:hover{
+    text-shadow: 0 0 3px #000000;
 } 
 
 

@@ -18,7 +18,7 @@ title: "Making a true robot"
 - DOUBT
 - LOVE
 
-# More than *just* emotions
+# More than just emotions
 - Add **emotions** (otherwise, see North-Koreans...)
 - Add **goal in life** (eg: having friends) (otherwise, see Dolarhyde...)
 - Add **events** in its life (otherwise, parallel with lonely elderlies...)
