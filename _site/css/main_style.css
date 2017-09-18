@@ -20,17 +20,17 @@ h1{
 }
 
 .left-ornament {
-	display: inline-block;
-font-weight: normal;
-	transform: scale(1, -1);
-	margin-right: 5px;
+    display: inline-block;
+    font-weight: normal;
+    transform: scale(1, -1);
+    margin-right: 5px;
 }
 
 .right-ornament {
-	display: inline-block;
-font-weight: normal;
-	transform: scale(-1, -1);
-	margin-left: 5px;
+    display: inline-block;
+    font-weight: normal;
+    transform: scale(-1, -1);
+    margin-left: 5px;
 }
 
 .post-list li{
@@ -78,6 +78,15 @@ nav span a:link {
 nav span a:visited {
     color: white;
 }
+
+.post-summary{
+    margin-bottom: 50px;
+
+}
+
+
+
+
 .center{
     text-align: center;
 }
