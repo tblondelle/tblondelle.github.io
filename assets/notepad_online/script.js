@@ -17,7 +17,7 @@ $(function () {
     store.click(function () {
         save_content();
         var data = {
-            message: "'" + te.val().substr(0, 30) + "...'" + " saved.",
+            message: "Saved",
             timeout: 1000
         };
         snackbar.MaterialSnackbar.showSnackbar(data);
