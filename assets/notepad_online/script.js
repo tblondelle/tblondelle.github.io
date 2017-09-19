@@ -40,5 +40,18 @@ $(function () {
 
     setInterval(save_content, 10000);
     retrieve_content();
+    
+    $(document).keydown(function(e) {
+		if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+			e.preventDefault();
+			save_content();
+			var data = {
+				message: "Saved",
+				timeout: 1000
+			};
+			snackbar.MaterialSnackbar.showSnackbar(data);
+		  }
+		});
+    
 
 });
