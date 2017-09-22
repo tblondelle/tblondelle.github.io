@@ -3,7 +3,7 @@ html{
 }
 
 
-body {
+body{
     margin: 0;
     font-family: 'Lora', serif;
     font-size: 18px;
@@ -84,11 +84,18 @@ nav span a:visited {
 
 }
 
-
-
+.center-message{
+    margin: auto;
+    width: 490px;
+}
 
 .center{
     text-align: center;
+}
+
+.btn{
+
+    font-family: Helvetica;
 }
 
 .button{
