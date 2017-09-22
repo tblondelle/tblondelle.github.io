@@ -9,7 +9,7 @@ body {
     position: absolute;
     top: 0;
     background-color: black;
-    width: calc(100%-50px);
+    width: calc(100% - 50px);
     padding-left: 50px;
     user-select: none;
 }
