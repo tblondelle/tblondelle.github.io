@@ -34,6 +34,7 @@ h1 {
     .left-ornament {
         display: inline-block;
         font-weight: normal;
+        font-family: sans-serif;
         transform: scale(1, -1);
         margin-right: 5px;
     }
