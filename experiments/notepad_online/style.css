@@ -61,8 +61,8 @@ body {
     outline: none;
     border: 0;
     resize: none;
-    background-color: white; /*transparent*/ 
-    z-index: 999;
+    background-color: transparent; /*transparent*/ 
+    /*z-index: 1;*/
     line-height: 20px;
     color: black; /*transparent*/
     caret-color: black; /*red*/
