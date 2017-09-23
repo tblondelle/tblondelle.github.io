@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Experiments</title>
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora|Cinzel" >
+  <link rel="icon" type="image/png" href="/images/favicon.PNG">
+
+  <link rel="canonical" href="http://tblondelle.github.io/experiments/">
+  <link rel="alternate" type="application/rss+xml" title="Your awesome title" href="http://tblondelle.github.io/feed.xml">
+
+</head>
+
+
+  <body>
+
+    <header class='top-header'>
+    <nav>
+      <span class="top-header-link"> <a href="/">Home</a></span>
+      <span class="top-header-link"> <a href="/posts">Posts</a></span>
+      <span class="top-header-link"> <a href="/experiments">Experiments</a></span>
+      <span class="top-header-link"> <a href="/contact">Contact</a></span>
+    </nav>
+</header>
+
+	
+    <main>
+
+        <div class="page-content">
+            <div class="wrapper">
+                <article class="post">
+
+  <h1><span class="left-ornament">অঢ়ঊ</span>Experiments<span class="right-ornament">অঢ়ঊ</span></h1>
+
+  <div class="post-content">
+    <div class="post-summary">
+
+	<h3> 1. Authentification</h3>
+
+	<p>I recently implemented an authentification page for a GitHub Pages website. The tricky part is that you normally need a server to send you the message once the username and password have been accepted. GitHub Pages only offers a static website, thus preventing any dynamic response of private data. </p>
+
+	<p> To go around the problem, I crypted my secret data into a JavaScript file as a series of integers. You can actually see the whole process for the decryption but you miss the private key, which can be recovered with my username and password. The cryptographic algorithm I used ("AES-CBC", 128 bits) is rather weak but I can increase the key size rather easily.</p>
+
+	<p>The technology I used is the Web Crypto API, which crypts your data directly in JavaScript. This video was useful indeed <a href="https://www.youtube.com/watch?v=rUi1j1NhGow">[link]</a>.</p>
+
+	<p> Try decrypting my implementation and drop me an email if you crack it!</p>
+	
+	<div class="center">
+	<a class="btn btn-default" href="/experiments/authentification/">Go now!</a> 
+	</div>
+
+</div>
+
+<div class="post-summary">
+	<h3> 2. Notepad Online</h3>
+
+	<p>Pretending this is actually Notepad++ Online is a bit pretentious for now on. But it could still be useful.</p>
+
+	<p>I am not the first one inventing the concept: <a href="http://www.rapidtables.com/tools/notepad.htm">rapidtables.com</a> provides a similar tool with more options, as well as <a href="http://www.mytextarea.com/">mytextarea.com</a>. </p>
+
+	<p>I added here the "automatically saved" option.</p>
+
+	<br />
+	<div class="center">
+	<a class="btn btn-default" href="/experiments/notepad-online/">Test it!</a> 
+	</div>
+</div>
+
+
+  </div>
+
+</article>
+
+            </div>
+        </div>
+    </main>
+      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106598446-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments)
+    };
+    gtag('js', new Date());
+    gtag('config', 'UA-106598446-1');
+</script>
+
+      
+  </body>
+
+</html>

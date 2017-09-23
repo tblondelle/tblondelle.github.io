@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Autentification page</title>
+
+        <link rel="stylesheet" media="(max-width: 500px)" href="/assets/authentification/max500px.css">
+        <link rel="stylesheet" media="(min-width: 500px)" href="/assets/authentification/min500px.css">
+	<link rel="icon" type="image/png" href="/images/favicon.PNG">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/assets/authentification/decrypt.js"></script>
+	    
+
+
+    </head>
+
+    <body>
+        <div id="escape_button"><a href="/experiments"><i class="material-icons">arrow_back</i></a></div>
+        <div role="dialog">
+            <h2>Authentification</h2>
+
+            <br>
+
+            <form id="authentification">
+                <label for="username">User name</label>
+                <br>
+                <input type='text' id="username">
+                <br>
+                <br>
+                <label for="password">Password</label>
+                <br>
+                    <input type="password" id="password">
+                <br>
+                <br>
+                <div>
+                    <button type="submit" id="Enter">Enter</button>
+                </div>
+				<br>
+                <br>
+            </form>
+        </div>
+
+    </body>
+
+</html>
