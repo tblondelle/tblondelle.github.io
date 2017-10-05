@@ -1,0 +1,43 @@
+---
+title: "Multiplayer chess"
+permalink: /experiments/chess/
+---
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{page.title}}</title>
+    <link rel="stylesheet" href="{{site.github.url}}/experiments/chess/style.css">
+    <link rel="stylesheet" href="./css/chessboard-0.3.0.min.css" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-yellow.min.css">
+    <link rel="icon" type="image/png" href="{{site.github.url}}/images/favicon.PNG">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script type="text/javascript" src="{{site.github.url}}/experiments/chess/script.js"></script>
+    <script src="./js/chessboard-0.3.0.min.js"></script>
+</head>
+
+<body>
+    
+    <div id="escape_button"><a href="{{site.github.url}}/experiments"><i class="material-icons">arrow_back</i></a></div>
+    <div class="menu">
+        <div class="click-item" id="new_button">NEW</div>
+        <div class="click-item" id="undo_button">Undo</div>
+    </div>
+    
+
+    <div id="board"></div>
+
+
+</body>
+
+</html>

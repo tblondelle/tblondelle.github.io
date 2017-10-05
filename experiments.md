@@ -30,11 +30,23 @@ permalink: /experiments/
 
 	<p>I am not the first one inventing the concept: <a href="http://www.rapidtables.com/tools/notepad.htm">rapidtables.com</a> provides a similar tool with more options, as well as <a href="http://www.mytextarea.com/">mytextarea.com</a>. </p>
 
-	<p>I added here the "automatically saved" option.</p>
+	<p>I have added the "automatically saved" option.</p>
 
-	<br>
 	<div class='center'>
 	<a class='btn btn-default' href="{{site.github.url}}/experiments/notepad-online/">Test it!</a> 
+	</div>
+</div>
+
+
+<div class="post-summary">
+	<h3> 3. Chess (17/10/05)</h3>
+
+	<p>It is harder than you would think to find a simple chess game online, without ads and countless scripts. I then wrote mine with the great help of  <a href="http://chessboardjs.com">chessboardjs</a>.</p>
+
+    <p>Further modifications are to be added but the point here is just being able to play...</p>
+
+	<div class='center'>
+	<a class='btn btn-default' href="{{site.github.url}}/experiments/chess/">Play!</a> 
 	</div>
 </div>
 

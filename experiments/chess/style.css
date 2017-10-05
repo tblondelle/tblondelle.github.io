@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', serif;
+    background-color: #555555;
+    height: 100vh;
+}
+
+.menu {
+    position: static    ;
+    top: 0;
+    background-color: black;
+    width: calc(100% - 50px);
+    padding-left: 50px;
+    user-select: none;
+}
+
+.click-item {
+    text-align: center;
+    color: black;
+    background-color: #d6d6d6;
+    display: inline-block;
+    height: calc(50px - 24px);
+    padding: 12px;
+    margin-right: -4px;
+    cursor: pointer;
+}
+
+.click-item:hover {
+    background-color: #c6c6c6;
+}
+
+#escape_button {
+	position: absolute;
+	padding: 12px;
+}
+
+@media all and (orientation: portrait){
+    #board {
+        width: 95vw;
+        margin: 2.5vw;
+    }
+}
+
+@media all and (orientation: landscape){
+    #board {
+        width: calc((100vh - 50px) - 5vh);
+        margin: 2.5vh auto;
+    }
+}
