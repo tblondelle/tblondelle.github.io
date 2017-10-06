@@ -15,7 +15,7 @@ permalink: /experiments/notepad-online/
     <link rel="stylesheet" href="{{site.github.url}}/experiments/notepad_online/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" >
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-yellow.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-red.min.css">
     <link rel="icon" type="image/png" href="{{site.github.url}}/images/favicon.PNG">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -25,11 +25,12 @@ permalink: /experiments/notepad-online/
 
 <body>
     <div class="menu">
-        <div class='click-item' id='save'>Save</div>
-        <div class='click-item' id='retrieve'>(Retrieve)</div>
-        <div class='click-item' id='linenumber'>Help</div>
+        <div class='click-item' id="escape_button"><a href="{{site.github.url}}/"><i class="material-icons">cancel</i></a></div>
+        <div class='click-item' id='save'><i class="material-icons">save</i></div>
+        <div class='click-item' id='retrieve'><i class="material-icons">unarchive</i></div>
+        <div class='click-item' id='linenumber'><i class="material-icons">help</i></div>
     </div>
-    <div id="escape_button"><a href="{{site.github.url}}/experiments"><i class="material-icons">arrow_back</i></a></div>
+    
     <div class="mdl-js-snackbar mdl-snackbar">
         <div class="mdl-snackbar__text"></div>
         <button class="mdl-snackbar__action" type="button"></button>

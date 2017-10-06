@@ -9,15 +9,14 @@ body {
     position: absolute;
     top: 0;
     background-color: black;
-    width: calc(100% - 50px);
-    padding-left: 50px;
+    width: calc(100% - 20px);
+    padding-left: 20px;
     user-select: none;
 }
 
 .click-item {
     text-align: center;
-    color: black;
-    background-color: #d6d6d6;
+    color: #eeeeee;
     display: inline-block;
     height: calc(50px - 24px);
     padding: 12px;
@@ -26,12 +25,11 @@ body {
 }
 
 .click-item:hover {
-    background-color: #c6c6c6;
+    color: #ffffff;
+    background-color: #333333;
 }
 
 #escape_button {
-	position: absolute;
-	padding: 12px;
 }
 
 .colorhere {
