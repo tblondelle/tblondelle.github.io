@@ -15,16 +15,6 @@ $(function () {
         console.log(JSON.stringify(positions));
     }
 
-    function retrieve_content() {
-        if (localStorage.getItem("positions")) {
-            console.log(1);
-            return JSON.parse(localStorage.getItem("positions"));
-        } else {
-            console.log(0);
-            return [board.fen()];
-        }   
-    };
-
     new_button.click(function () {
         board.start();
         positions = [board.fen()];
@@ -39,17 +29,24 @@ $(function () {
         }
     });
 
-    var positions = retrieve_content();
-    
-    var board = ChessBoard('board', {
-        position: positions[positions.length - 1],
-        showNotation: false,
-        draggable: true,
-        onDrop: onDrop,
-    });
+    // Retrieve old positions or start new board.
+    if (localStorage.getItem("positions")) {
 
-    
+        var positions = JSON.parse(localStorage.getItem("positions")),
+            board = ChessBoard('board', {
+                position: positions[positions.length - 1],
+                showNotation: false,
+                draggable: true,
+                onDrop: onDrop,
+            });
 
-
-
+    } else {
+        var board = ChessBoard('board', {
+                position: 'start',
+                showNotation: false,
+                draggable: true,
+                onDrop: onDrop,
+            }),
+            positions = [board.fen()];
+    }
 });
