@@ -6,37 +6,34 @@
 </description>
     <link>http://tblondelle.github.io/</link>
     <atom:link href="http://tblondelle.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 06 Oct 2017 00:01:29 +0200</pubDate>
-    <lastBuildDate>Fri, 06 Oct 2017 00:01:29 +0200</lastBuildDate>
+    <pubDate>Fri, 06 Oct 2017 19:22:22 +0200</pubDate>
+    <lastBuildDate>Fri, 06 Oct 2017 19:22:22 +0200</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
-        <title>Making a true robot</title>
-        <description>&lt;p&gt;&lt;em&gt;Work in progress&lt;/em&gt;&lt;/p&gt;
+        <title>Example 2</title>
+        <description>&lt;p&gt;&lt;strong&gt;Première section : De l’usage logique de l’entendement en général&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;seven-emotions&quot;&gt;Seven emotions&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;ANGER : temp madness, need to evacuate&lt;/li&gt;
-  &lt;li&gt;FEAR : irrational, instinct feeling being killed, hurt&lt;/li&gt;
-  &lt;li&gt;JOY : normal state&lt;/li&gt;
-  &lt;li&gt;SADNESS : pointlessness of life, not being cared, obstacles in life&lt;/li&gt;
-  &lt;li&gt;DISGUST : to something that can be harmful but can be avoided&lt;/li&gt;
-  &lt;li&gt;CONTEMPT :&lt;/li&gt;
-  &lt;li&gt;SURPRISE :&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Kant&lt;/em&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;more-emotions&quot;&gt;More emotions&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;DOUBT&lt;/li&gt;
-  &lt;li&gt;LOVE&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;L’entendement a été défini plus haut d’une manière purement négative : une faculté de connaître non sensible. Or nous ne pouvons avoir aucune intuition en dehors de la sensibilité. L’entendement n’est donc pas une faculté d’intuition. Mais, l’intuition mise à part, il n’y a pas d’autre moyen de connaître que les concepts. La connaissance de tout entendement, du moins de l’entendement humain, est donc une connaissance par concepts, une connaissance non intuitive, mais discursive. Toutes les intuitions, en tant que sensibles, reposent sur des affections, mais les concepts supposent des fonctions. J’entends par fonction l’unité de l’acte qui consiste à réunir diverses représentations sous une représentation commune. Les concepts reposent donc sur la spontanéité de la pensée, de même que les intuitions sensibles sur la réceptivité des impressions. L’entendement ne peut faire de ces concepts d’autre usage que de juger par leur moyen. Or comme, excepté l’intuition, aucune représentation ne se rapporte immédiatement à l’objet, un concept n’est jamais immédiatement rapporté à un objet, mais à quelque autre représentation de cet objet (qu’elle soit une intuition, ou déjà même un concept). Le jugement est donc la connaissance médiate d’un objet, par conséquent la représentation d’une représentation de cet objet. Dans tout jugement, il y a un concept qui en embrasse plusieurs, et qui, parmi eux, comprend aussi une représentation donnée, laquelle enfin se rapporte immédiatement à l’objet. Ainsi, dans ce jugement : &lt;em&gt;tous les corps sont divisibles&lt;/em&gt;, le concept du divisible se rapporte à divers autres concepts ; mais, entre autres, il se rapporte particulièrement à celui de corps, lequel, à son tour, se rapporte à certains phénomènes qui se présentent à nous. Ainsi ces objets sont médiatement représentés par le concept de la divisibilité. Tous les jugements sont donc des fonctions qui consistent à ramener nos représentations à l’unité, en substituant à une représentation immédiate une représentation plus élevée qui comprend la première avec beaucoup d’autres et qui sert à la connaissance de l’objet, et, en réunissant ainsi beaucoup de connaissances possibles sous une seule. Comme nous pouvons ramener tous les actes de l’entendement à des jugements, l’&lt;em&gt;entendement&lt;/em&gt; en général peut être représenté comme une &lt;em&gt;faculté de juger&lt;/em&gt;. En effet, d’après ce qui a été dit précédemment, l’entendement est une faculté de penser. Or penser, c’est connaître au moyen de concepts, et les concepts, comme prédicats de jugements possibles, se rapportent à quelque représentation d’un objet encore indéterminé. Ainsi le concept du corps signifie quelque chose, par exemple, un métal, qui peut être connu au moyen de ce concept. Il n’est donc un concept qu’à la condition de contenir d’autres représentations au moyen desquelles il peut se rapporter à des objets. Il est donc le prédicat d’un jugement possible, de celui-ci, par exemple : tout métal est un corps. On trouvera donc toutes les fonctions de l’entendement, si l’on parvient à déterminer d’une manière complète les fonctions de l’unité dans les jugements. Or la section suivante va montrer que cela est très exécutable.&lt;/p&gt;
 
-&lt;h1 id=&quot;more-than-just-emotions&quot;&gt;More than just emotions&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;Add &lt;strong&gt;emotions&lt;/strong&gt; (otherwise, see North-Koreans…)&lt;/li&gt;
-  &lt;li&gt;Add &lt;strong&gt;goal in life&lt;/strong&gt; (eg: having friends) (otherwise, see Dolarhyde…)&lt;/li&gt;
-  &lt;li&gt;Add &lt;strong&gt;events&lt;/strong&gt; in its life (otherwise, parallel with lonely elderlies…)&lt;/li&gt;
-&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 06 Oct 2017 00:00:00 +0200</pubDate>
+        <link>http://tblondelle.github.io/2017/10/06/example2.html</link>
+        <guid isPermaLink="true">http://tblondelle.github.io/2017/10/06/example2.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Example 1</title>
+        <description>&lt;p&gt;&lt;strong&gt;Des concepts purs de l’entendement ou des catégories.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Kant&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;La logique générale, comme il a été déjà dit plusieurs fois, fait abstraction de tout contenu de la connaissance et elle attend que des représentations lui viennent d’ailleurs, d’où que ce soit, pour les convertir d’abord en concepts, ce qu’elle fait au moyen de l’analyse.&lt;/p&gt;
+
 </description>
         <pubDate>Sat, 16 Sep 2017 00:00:00 +0200</pubDate>
         <link>http://tblondelle.github.io/2017/09/16/making-true-robot.html</link>
