@@ -4,6 +4,8 @@ title: "Contact"
 permalink: /contact/
 ---
 
+
+
 I am a French student experimenting web technologies and AI techniques.
 
 You can contact me at <code>thomas.blondelle@gmail.com</code>, see my GitHub page, or even have a look at my LinkedIn page.
@@ -18,3 +20,6 @@ You can contact me at <code>thomas.blondelle@gmail.com</code>, see my GitHub pag
        <span>@tblondelle</span>
    </a>
 </div>
+
+
+<div class="center logo_site">-- &#68181; --</div>

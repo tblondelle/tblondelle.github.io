@@ -96,7 +96,7 @@ $(function () {
     save_button.click(function () {
         var element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(fen_positions)));
-        element.setAttribute('download', Date.now() + '.json');
+        element.setAttribute('download', Date.now() + '.chessgame');
         element.style.display = 'none';
         document.body.appendChild(element);
         element.click();

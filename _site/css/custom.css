@@ -119,3 +119,12 @@ code .black {
 .btn {
     font-family: Helvetica, sans-serif;
 }
+
+.logo_site{
+    font-size: 50px;
+    padding: 20px;
+}
+
+.page-content {
+    padding-bottom: 0;
+}

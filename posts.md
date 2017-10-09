@@ -19,3 +19,6 @@ permalink: /posts/
   </ul>
 
 </div>
+
+
+<div class="center logo_site">-- &#68181; --</div>
