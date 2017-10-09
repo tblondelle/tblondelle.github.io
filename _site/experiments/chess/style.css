@@ -12,24 +12,45 @@ body {
     width: calc(100% - 20px);
     padding-left: 20px;
     user-select: none;
+    margin: 0;
 }
 
 .click-item {
     text-align: center;
-    color: #eeeeee;
     display: inline-block;
     height: calc(50px - 24px);
     padding: 12px;
     margin-right: -4px;
     cursor: pointer;
+    color: white;
+}
+
+.click-item button, .click-item label{
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+    color: inherit;
+    cursor: inherit;
+    outline:0;
 }
 
 .click-item:hover {
-    color: #ffffff;
-    background-color: #333333;
+    color: #000000;
+    background-color: #ffffff;
+    outline: inherit;
 }
 
 
+
+#file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
 
 @media all and (orientation: portrait){
     #board {

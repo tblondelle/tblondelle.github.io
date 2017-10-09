@@ -44,6 +44,8 @@ permalink: /experiments/
 	<p>It is harder than you would think to find a simple chess game online, without ads and countless scripts. I then wrote mine with the great help of  <a href="http://chessboardjs.com">chessboardjs</a>.</p>
 
     <p>The "autosave" is activated. Further modifications are to be added but the point here is just being able to play...</p>
+    
+    <p>(17/10/09) I have added a Redo option as well as the possiblity to save and upload the whole game.</p>
 
 	<div class='center'>
 	<a class='btn btn-default' href="{{site.github.url}}/experiments/chess/">Play!</a> 
