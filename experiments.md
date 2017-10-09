@@ -6,7 +6,7 @@ permalink: /experiments/
 
 <div class="post-summary">
 
-	<h3> 1. Authentification</h3>
+	<h3> 1. Authentification <a href="{{site.github.url}}/experiments/authentification"><i class="material-icons">open_in_new</i></a></h3>
 
 	<p>I recently implemented an authentification page for a GitHub Pages website. The tricky part is that you normally need a server to send you the message once the username and password have been accepted. GitHub Pages only offers a static website, thus preventing any dynamic response of private data. </p>
 
@@ -15,16 +15,12 @@ permalink: /experiments/
 	<p>The technology I used is the Web Crypto API, which crypts your data directly in JavaScript. This video was useful indeed <a href="https://www.youtube.com/watch?v=rUi1j1NhGow">[link]</a>.</p>
 
 	<p> Try decrypting my implementation and drop me an email if you crack it!</p>
-	
-	<div class='center'>
-	<a class='btn btn-default' href="{{site.github.url}}/experiments/authentification/">Go now!</a> 
-	</div>
 
 </div>
 
 
 <div class="post-summary">
-	<h3> 2. Notepad Online</h3>
+	<h3> 2. Notepad online <a href="{{site.github.url}}/experiments/notepad-online"><i class="material-icons">open_in_new</i></a></h3>
 
 	<p>Pretending this is actually Notepad++ Online is a bit pretentious for now on. But it could still be useful.</p>
 
@@ -32,24 +28,17 @@ permalink: /experiments/
 
 	<p>I have added the "automatically saved" option.</p>
 
-	<div class='center'>
-	<a class='btn btn-default' href="{{site.github.url}}/experiments/notepad-online/">Test it!</a> 
-	</div>
 </div>
 
 
 <div class="post-summary">
-	<h3> 3. Chess (17/10/05)</h3>
+	<h3> 3. Chess (17/10/05) <a href="{{site.github.url}}/experiments/chess"><i class="material-icons">open_in_new</i></a></h3>
 
 	<p>It is harder than you would think to find a simple chess game online, without ads and countless scripts. I then wrote mine with the great help of  <a href="http://chessboardjs.com">chessboardjs</a>.</p>
 
     <p>The "autosave" is activated. Further modifications are to be added but the point here is just being able to play...</p>
     
     <p>(17/10/09) I have added a Redo option as well as the possiblity to save and upload the whole game.</p>
-
-	<div class='center'>
-	<a class='btn btn-default' href="{{site.github.url}}/experiments/chess/">Play!</a> 
-	</div>
 </div>
 
 
