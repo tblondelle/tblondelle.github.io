@@ -6,7 +6,7 @@ permalink: /contact/
 
 I am a French student experimenting web technologies and AI techniques.
 
-You can contact me at <code class="black"   >thomas.blondelle@gmail.com</code>, see my GitHub page, or even see my LinkedIn page.
+You can contact me at <code class="black"   >thomas.blondelle@gmail.com</code>, see my GitHub page, or even have a look at my LinkedIn page.
 
 <div class='center'>
    <a href="https://github.com/tblondelle" class="btn btn-default">
