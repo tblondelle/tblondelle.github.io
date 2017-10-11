@@ -69,10 +69,12 @@ $(function () {
     }
 
     new_button.click(function () {
-        board.start();
-        fen_positions = [START_POSITION];
-        step = 0;
-        save_content(fen_positions, step);
+        if (confirm("Do you really want to start over?")) {
+            board.start();
+            fen_positions = [START_POSITION];
+            step = 0;
+            save_content(fen_positions, step);
+        }
     });
 
     undo_button.click(function () {
