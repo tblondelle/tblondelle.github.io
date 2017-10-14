@@ -11,17 +11,20 @@ $(function () {
     var START_POSITION = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR';
 
     /**
-     * A chaque coup joué, on enregistre la positioon dans la variable
-     * et on l'enregistre dans le cookie.
+     * Every move is saved in LocalStorage. If one undid some 
+     * move and one takes a different path for the game, the 
+     * first path is removed.
      */
     var onDrop = function (source, target, piece, newPos, oldPos, orientation) {
         step = step + 1;
         fen_positions = fen_positions.slice(0, step);
         fen_positions.push(ChessBoard.objToFen(newPos));
         save_content(fen_positions, step);
-        //console.log(step, fen_positions);
     };
 
+    /** 
+     * Save content in Local Storage.
+     */
     function save_content(fen_positions, step) {
         localStorage.setItem("fen_positions", JSON.stringify(fen_positions));
         localStorage.setItem("step", step);
@@ -59,7 +62,11 @@ $(function () {
         return true;
     }
 
-    function check_file_fen_positions(fen_positions_) {
+    /**
+    * Check if the argument is an array full of valid fen.
+    * (https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation).
+    */
+    function is_valid_chessgame_file(fen_positions_) {
         for (var i = 0; i < fen_positions_.length; i++) {
             if (!validFen(fen_positions_[i])) {
                 return false;
@@ -70,9 +77,9 @@ $(function () {
 
     new_button.click(function () {
         if (confirm("Do you really want to start over?")) {
-            board.start();
-            fen_positions = [START_POSITION];
             step = 0;
+            fen_positions = [START_POSITION];
+            board.start();
             save_content(fen_positions, step);
         }
     });
@@ -80,7 +87,6 @@ $(function () {
     undo_button.click(function () {
         if (step > 0) {
             step = step - 1;
-            //console.log(step, fen_positions);
             board.position(fen_positions[step]);
             save_content(fen_positions, step);
         }
@@ -89,7 +95,6 @@ $(function () {
     redo_button.click(function () {
         if (step < fen_positions.length - 1) {
             step = step + 1;
-            //console.log(step, fen_positions);
             board.position(fen_positions[step]);
             save_content(fen_positions, step);
         }
@@ -105,17 +110,21 @@ $(function () {
         document.body.removeChild(element);
     });
 
+    /**
+    * When 'load' button is clicked, check the validity
+    * of the chessgame file. Then update the board accordingly.
+    */
     var fileInput = document.querySelector('#file');
     fileInput.addEventListener('change', function () {
         var reader = new FileReader();
         reader.readAsText(fileInput.files[0]);
         reader.addEventListener('load', function () {
             new_fen_positions = JSON.parse(reader.result);
-            if (check_file_fen_positions(new_fen_positions)) {
+            if (is_valid_chessgame_file(new_fen_positions)) {
                 fen_positions = new_fen_positions;
+                step = fen_positions.length - 1;
+                board.position(fen_positions[step]);
                 save_content(fen_positions, step);
-                //console.log(fen_positions);
-                board.position(fen_positions[fen_positions.length - 1])
             } else {
                 alert('File corrupted.')
             }
@@ -123,8 +132,9 @@ $(function () {
     });
 
 
-
-    // Init the board.
+    /**
+    * Retrieve old game from LocalStorage or load new game settings.
+    */
     if (localStorage.getItem("fen_positions") && localStorage.getItem("step")) {
         fen_positions = JSON.parse(localStorage.getItem("fen_positions"))
         step = JSON.parse(localStorage.getItem("step"));
@@ -133,12 +143,12 @@ $(function () {
         step = 0;
     }
 
+    // Init the board.
     board = ChessBoard('board', {
+        position: fen_positions[step],
         showNotation: false,
         draggable: true,
         onDrop: onDrop,
     });
-
-    board.position(fen_positions[step]);
 
 });
