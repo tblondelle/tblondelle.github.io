@@ -92,7 +92,7 @@ $(function () {
             ).then(function (result) {
                 decryptedBytes = new Uint8Array(result);
                 //alert(byteArrayToHexString(decryptedBytes));
-                replace__All(byteArrayToHexString(decryptedBytes));
+                replace_body(byteArrayToHexString(decryptedBytes));
             }).catch(function (err) {
                 alert("Problem decrypting: " + err.message);
                 console.log(err)
@@ -103,7 +103,7 @@ $(function () {
     });
 
     
-    function replace__All(html) {
+    function replace_body(html) {
         $('body').empty()
         $('body').append(html);
     };
