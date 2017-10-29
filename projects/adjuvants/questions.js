@@ -470,7 +470,6 @@ $(function () {
         update_question(nodes[current_node]);
         $(".question-card").css("display", "block");
         show_question();
-        bar.animate(0.1); // Number from 0.0 to 1.0*/
     });
 
 
