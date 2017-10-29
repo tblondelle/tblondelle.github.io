@@ -35,7 +35,7 @@ $(function () {
         duree_courte = false;
 
     var current_node = "";
-    var progress = 0;
+    var progress = -1;
 
 
     var message = [];
