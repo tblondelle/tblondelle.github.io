@@ -1,0 +1,81 @@
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background-color: #78CF2B;
+    font-family: Nunito, Helvetica, sans-serif;
+    min-height: calc(100% - 50px);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+/*
+Palette
+    http://paletton.com/#uid=12-0u0kpit0fCDWkIvqt1opvJjo
+*/
+
+#container {
+    position: sticky;
+}
+
+main {
+    padding: 10px;
+}
+
+#question-card {
+    display: none;
+}
+
+.question-card {
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px grey;
+    margin: 10px auto;
+    max-width: 500px;
+}
+
+.question-card-text {
+    padding: 20px;
+}
+
+.card-propertext {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.card-title {
+    padding-bottom: 10px;
+    font-size: x-large;
+}
+
+.card-actions {
+    padding: 10px;
+    margin-top: -5px;
+    text-align: center;
+    background-color: #eee;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#label {
+    font-weight: bold;
+}
+
+.result-card {
+    display:none;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px grey;
+    margin: 10px auto;
+    max-width: 500px;
+    padding: 20px;
+}
