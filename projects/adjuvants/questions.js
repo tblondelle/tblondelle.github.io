@@ -19,20 +19,32 @@ $(function () {
     }
 
 
-    // variables de parametres
-    var diametre = 0,
-        viscosite = false,
-        humectant = false,
-        acidifiant = false;
-
+function print_debug(){
+console.log("viscosite : "+ viscosite);
+console.log("diametre : "+ diametre);
+console.log("cristaux : "+ cristaux);
+console.log("humidite : "+ humidite);
+console.log("temp_eleve : "+ temp_eleve);
+console.log("cleaner : "+ cleaner);
+console.log("low_ph : "+ low_ph);
+console.log("vent_fort : "+ vent_fort);
+console.log("pluie : "+ pluie);
+console.log("durete : "+ durete);
+console.log("duree_courte : "+ duree_courte);
+console.log("humectant : "+ humectant);
+console.log("acidifiant : "+ acidifiant);
+console.log("emulsifiant : "+ emulsifiant);
+}
     // variables de réponses
-    var cristaux = false,
+    var cristaux,
         humidite = 20,
-        temp = 20,
-        cleaner = false,
-        pluie = false,
-        durete = false,
-        duree_courte = false;
+        temp_eleve,
+        cleaner,
+	low_ph,
+	vent_fort,
+        pluie,
+        durete,
+        duree_courte;
 
     var current_node = "";
     var progress = -1;
@@ -41,6 +53,7 @@ $(function () {
     var message = [];
 
     function ending() {
+
         bar.animate(1);
 
 
@@ -58,45 +71,79 @@ $(function () {
         message.html("");
 
 
-        var emulsifiant = 1 - diametre;
+        // variables de parametres
+        var diametre = 0,
+	    viscosite = false,
+	    humectant = false,
+	    acidifiant = false,
+	    emulsifiant = false;
+
+	if (humidite < 30) {
+            humectant = true;
+	} else {
+	    humectant = false;
+	}
+
+	if (temp_eleve){
+	    humectant = true;
+            diametre += 1;
+	}
+
+	if (vent_fort !== undefined){
+	    humectant = !vent_fort;	
+	}
+	if (low_ph !== undefined){
+            acidifiant = !low_ph;	
+	}
+
+	emulsifiant = 1 - diametre;
+	viscosite = cristaux;
+
+
+
+	print_debug();
+
 
         if (cristaux) {
-            message.append("<p>La présence de cristaux de cire impose d'augmenter la viscosité du produit pour éviter le rebond des gouttes.</p>");
-        }
+            message.append("<p>1 La présence de cristaux de cire impose d'augmenter la viscosité du produit pour éviter le rebond des gouttes.</p>");
+        } else {
+            message.append("<p>1bis. Pas de cristaux.</p>");
+
+
         if (humidite < 30) {
-            message.append("<p>Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite.</p>")
-        } else if (humectant) {
-            message.append("<p>Les conditions climatiques imposent d'ajouter des humectants pour que le produit s'évapore moins vite.</p>");
+            message.append("<p>2. Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite.</p>")
+        } else {
+            message.append("<p>3. Les conditions climatiques imposent d'ajouter des humectants pour que le produit s'évapore moins vite.</p>");
         }
 
         if (viscosite) {
-            message.append("<p>Pour éviter que les gouttes ne rebondissent, il nous faut aussi diminuer le diamètre de la goutte au contact de la feuille.</p>")
+            message.append("<p>4. Pour éviter que les gouttes ne rebondissent, il nous faut aussi diminuer le diamètre de la goutte au contact de la feuille.</p>")
         } else {
-            message.append("<p>Pour éviter que les gouttes ne rebondissent, il nous faut diminuer le diamètre de la goutte au contact de la feuille.</p>")
+            message.append("<p>5. Pour éviter que les gouttes ne rebondissent, il nous faut diminuer le diamètre de la goutte au contact de la feuille.</p>")
         }
 
         if (humectant && emulsifiant === 0) {
-            message.append("<p>Au vu des conditions météorologiques, comme l'évaporation diminue déjà le diamètre de goutte durant son trajet, nous n'ajoutons pas d'émulsifiants");
+            message.append("<p>6. Au vu des conditions météorologiques, comme l'évaporation diminue déjà le diamètre de goutte durant son trajet, nous n'ajoutons pas d'émulsifiants");
         } else if (!humectant && emulsifiant > 0) {
-            message.append("<p>Il nous faut donc des émulsifiants pour diminuer le diamètre en sortie de buse.</p>")
+            message.append("<p>7. Il nous faut donc des émulsifiants pour diminuer le diamètre en sortie de buse.</p>")
         } else if (humectant && emulsifiant > 0) {
-            message.append("<p>L'évaporation ne suffit pas à obternir un diamètre assze faible lorsque la goutte arrive sur la feuille, il nous faut donc ajouter des émulsifiants pour augenter le diamètre en sortie de buse.</p>")
+            message.append("<p>8. L'évaporation ne suffit pas à obternir un diamètre assze faible lorsque la goutte arrive sur la feuille, il nous faut donc ajouter des émulsifiants pour augenter le diamètre en sortie de buse.</p>")
         } // Le quatrième cas ne peut pas se produire.
 
         if (pluie) {
-            message.append("<p>Pour éviter que la pluie ne rince le produit, il est conseillé d'y ajouter un produit sticker.</p>")
+            message.append("<p>9. Pour éviter que la pluie ne rince le produit, il est conseillé d'y ajouter un produit sticker.</p>")
         }
 
-        if (acidifiant) {
-            message.append("<p>L'ajout d'acidifiant empeche que le principe actif ne soit détruit avant d'etre efficace.</p>")
+        if (acidifiant === true) {
+            message.append("<p>10. L'ajout d'acidifiant empeche que le principe actif ne soit détruit avant d'être efficace.</p>")
         }
 
-        if (cleaner) {
-            message.append('<p>Un tank cleaner vous permettra de mieux nettoyer votre réservoir.</p>')
+        if (cleaner === true) {
+            message.append('<p>11. Un tank cleaner vous permettra de mieux nettoyer votre réservoir.</p>')
         }
 
         if (!duree_courte) {
-            message.append("<p>Les différents composants de votre produit risquent de se séparer par décantation. Un dispersant permet d'éviter cela.</p>")
+            message.append("<p>12. Les différents composants de votre produit risquent de se séparer par décantation. Un dispersant permet d'éviter cela.</p>")
         }
 
 
@@ -121,13 +168,13 @@ $(function () {
         },
         humidite: {
             title: "Humidité",
-            text: "Indiquez le taux d'humidité localement :",
+            text: "Indiquez le taux d'humidité local :",
             actions: generate_range_html(0, 100, 50, '%')
         },
         temperature: {
             title: "Temperature",
             text: "Indiquez la température actuelle :",
-            actions: generate_range_html(0, 40, 20, '°C')
+            actions: generate_range_html(-20, 20, 0, '°C')
         },
         ph: {
             title: "pH",
@@ -146,17 +193,17 @@ $(function () {
         },
         pluie: {
             title: "Pluie",
-            text: "Pleut-il souvent lorsque vous pulverisez vos cultures ?",
+            text: "Pleut-il souvent lorsque vous pulvérisez des pesticides sur vos cultures ?",
             actions: BUTTONS_YES_NO
         },
         cleaner: {
             title: "Agents nettoyants",
-            text: "Avez-vous du mal à nettoyer votre réservoir après pulvérisation ?",
+            text: "Votre cuve a t-elle du mal à être nettoyée?",
             actions: BUTTONS_YES_NO
         },
         duree: {
             title: "Conservation",
-            text: "Avez-vous l'intention de conserver le mélange moins de deux jours?",
+            text: "Le mélange que vous allez préparer sera-t-il intégralement utilisé dans les 24 heures ?",
             actions: BUTTONS_YES_NO
         }
     }
@@ -173,13 +220,13 @@ $(function () {
             choice_yes: {
                 noeud: "humidite",
                 resultat: function () {
-                    viscosite = true;
+		    cristaux = true;
                 }
             },
             choice_no: {
                 noeud: "humidite",
                 resultat: function () {
-                    viscosite = false;
+		    cristaux = false;
                 }
             },
         },
@@ -189,7 +236,6 @@ $(function () {
                 reponse: [0, 30],
                 noeud: "ph",
                 resultat: function () {
-                    humectant = true;
                     humidite = 15;
                 }
             },
@@ -204,7 +250,6 @@ $(function () {
                 reponse: [71, 100],
                 noeud: "ph",
                 resultat: function () {
-                    humectant = false;
                     humidite = 85;
                 }
             }
@@ -215,14 +260,16 @@ $(function () {
                 reponse: [20, 40],
                 noeud: "ph",
                 resultat: function () {
-                    humectant = true;
-                    diametre += 1;
+		    temp_eleve = true;
+                    
                 }
             },
             choice_low: {
-                reponse: [0, 20],
+                reponse: [-20, 20],
                 noeud: "vent",
-                resultat: function () {}
+                resultat: function () {
+		     temp_eleve = false;
+		}
             }
         },
         vent: {
@@ -231,14 +278,15 @@ $(function () {
                 reponse: [0, 10],
                 noeud: "ph",
                 resultat: function () {
-                    humectant = true;
+		    vent_fort = false;
+                    
                 }
             },
             choice_high: {
                 reponse: [10, 19],
                 noeud: "ph",
                 resultat: function () {
-                    humectant = false;
+		    vent_fort = true;
                 }
             }
         },
@@ -248,14 +296,14 @@ $(function () {
                 reponse: [0, 7],
                 noeud: "durete",
                 resultat: function () {
-                    acidifiant = false;
+		    low_ph = true;
                 }
             },
             choice_high: {
                 reponse: [7.1, 14],
                 noeud: "durete",
                 resultat: function () {
-                    acidifiant = true;
+		    low_ph = false;
                 }
             }
         },
@@ -264,7 +312,7 @@ $(function () {
             choice_yes: {
                 noeud: "pluie",
                 resultat: function () {
-                    durete = true
+                    durete = true;
                 }
             },
             choice_no: {
@@ -370,6 +418,7 @@ $(function () {
         })
         progress += 1;
         bar.animate(progress / 9);
+	print_debug();
     }
 
     function hide_question() {
@@ -430,7 +479,6 @@ $(function () {
                 update_question(nodes[current_node]);
                 show_question(current_node);
             } else {
-
                 ending();
             }
 
