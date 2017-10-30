@@ -19,29 +19,39 @@ $(function () {
     }
 
 
-function print_debug(){
-console.log("viscosite : "+ viscosite);
-console.log("diametre : "+ diametre);
-console.log("cristaux : "+ cristaux);
-console.log("humidite : "+ humidite);
-console.log("temp_eleve : "+ temp_eleve);
-console.log("cleaner : "+ cleaner);
-console.log("low_ph : "+ low_ph);
-console.log("vent_fort : "+ vent_fort);
-console.log("pluie : "+ pluie);
-console.log("durete : "+ durete);
-console.log("duree_courte : "+ duree_courte);
-console.log("humectant : "+ humectant);
-console.log("acidifiant : "+ acidifiant);
-console.log("emulsifiant : "+ emulsifiant);
-}
+    function print_debug() {
+        console.log("viscosite : " + viscosite);
+        console.log("diametre : " + diametre);
+        console.log("cristaux : " + cristaux);
+        console.log("humidite : " + humidite);
+        console.log("temp_eleve : " + temp_eleve);
+        console.log("cleaner : " + cleaner);
+        console.log("low_ph : " + low_ph);
+        console.log("vent_fort : " + vent_fort);
+        console.log("pluie : " + pluie);
+        console.log("durete : " + durete);
+        console.log("duree_courte : " + duree_courte);
+        console.log("humectant : " + humectant);
+        console.log("acidifiant : " + acidifiant);
+        console.log("emulsifiant : " + emulsifiant);
+        console.log("========================");
+    }
+
+    // variables de parametres
+    var diametre = 0,
+        viscosite = false,
+        humectant = false,
+        acidifiant = false,
+        emulsifiant = false;
+
+
     // variables de réponses
     var cristaux,
         humidite = 20,
         temp_eleve,
         cleaner,
-	low_ph,
-	vent_fort,
+        low_ph,
+        vent_fort,
         pluie,
         durete,
         duree_courte;
@@ -57,10 +67,10 @@ console.log("emulsifiant : "+ emulsifiant);
         bar.animate(1);
 
 
-        
+
         $('.question-card').html("");
         $('.card-title').html("Résultats");
-        
+
 
         $(".result-card").fadeIn(600, function () {
             // Animation complete
@@ -71,44 +81,39 @@ console.log("emulsifiant : "+ emulsifiant);
         message.html("");
 
 
-        // variables de parametres
-        var diametre = 0,
-	    viscosite = false,
-	    humectant = false,
-	    acidifiant = false,
-	    emulsifiant = false;
 
-	if (humidite < 30) {
+
+        if (humidite < 30) {
             humectant = true;
-	} else {
-	    humectant = false;
-	}
+        } else {
+            humectant = false;
+        }
 
-	if (temp_eleve){
-	    humectant = true;
+        if (temp_eleve) {
+            humectant = true;
             diametre += 1;
-	}
+        }
 
-	if (vent_fort !== undefined){
-	    humectant = !vent_fort;	
-	}
-	if (low_ph !== undefined){
-            acidifiant = !low_ph;	
-	}
+        if (vent_fort !== undefined) {
+            humectant = !vent_fort;
+        }
+        if (low_ph !== undefined) {
+            acidifiant = !low_ph;
+        }
 
-	emulsifiant = 1 - diametre;
-	viscosite = cristaux;
+        emulsifiant = 1 - diametre;
+        viscosite = cristaux;
 
 
 
-	print_debug();
+        print_debug();
 
 
         if (cristaux) {
             message.append("<p>1 La présence de cristaux de cire impose d'augmenter la viscosité du produit pour éviter le rebond des gouttes.</p>");
         } else {
             message.append("<p>1bis. Pas de cristaux.</p>");
-
+        }
 
         if (humidite < 30) {
             message.append("<p>2. Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite.</p>")
@@ -127,7 +132,7 @@ console.log("emulsifiant : "+ emulsifiant);
         } else if (!humectant && emulsifiant > 0) {
             message.append("<p>7. Il nous faut donc des émulsifiants pour diminuer le diamètre en sortie de buse.</p>")
         } else if (humectant && emulsifiant > 0) {
-            message.append("<p>8. L'évaporation ne suffit pas à obternir un diamètre assze faible lorsque la goutte arrive sur la feuille, il nous faut donc ajouter des émulsifiants pour augenter le diamètre en sortie de buse.</p>")
+            message.append("<p>8. L'évaporation ne suffit pas à obtenir un diamètre assez faible lorsque la goutte arrive sur la feuille, il nous faut donc ajouter des émulsifiants pour augmenter le diamètre en sortie de buse.</p>")
         } // Le quatrième cas ne peut pas se produire.
 
         if (pluie) {
@@ -135,7 +140,7 @@ console.log("emulsifiant : "+ emulsifiant);
         }
 
         if (acidifiant === true) {
-            message.append("<p>10. L'ajout d'acidifiant empeche que le principe actif ne soit détruit avant d'être efficace.</p>")
+            message.append("<p>10. L'ajout d'acidifiant empêche que le principe actif ne soit détruit avant d'être efficace.</p>")
         }
 
         if (cleaner === true) {
@@ -220,13 +225,13 @@ console.log("emulsifiant : "+ emulsifiant);
             choice_yes: {
                 noeud: "humidite",
                 resultat: function () {
-		    cristaux = true;
+                    cristaux = true;
                 }
             },
             choice_no: {
                 noeud: "humidite",
                 resultat: function () {
-		    cristaux = false;
+                    cristaux = false;
                 }
             },
         },
@@ -260,16 +265,16 @@ console.log("emulsifiant : "+ emulsifiant);
                 reponse: [20, 40],
                 noeud: "ph",
                 resultat: function () {
-		    temp_eleve = true;
-                    
+                    temp_eleve = true;
+
                 }
             },
             choice_low: {
                 reponse: [-20, 20],
                 noeud: "vent",
                 resultat: function () {
-		     temp_eleve = false;
-		}
+                    temp_eleve = false;
+                }
             }
         },
         vent: {
@@ -278,15 +283,15 @@ console.log("emulsifiant : "+ emulsifiant);
                 reponse: [0, 10],
                 noeud: "ph",
                 resultat: function () {
-		    vent_fort = false;
-                    
+                    vent_fort = false;
+
                 }
             },
             choice_high: {
                 reponse: [10, 19],
                 noeud: "ph",
                 resultat: function () {
-		    vent_fort = true;
+                    vent_fort = true;
                 }
             }
         },
@@ -296,14 +301,14 @@ console.log("emulsifiant : "+ emulsifiant);
                 reponse: [0, 7],
                 noeud: "durete",
                 resultat: function () {
-		    low_ph = true;
+                    low_ph = true;
                 }
             },
             choice_high: {
                 reponse: [7.1, 14],
                 noeud: "durete",
                 resultat: function () {
-		    low_ph = false;
+                    low_ph = false;
                 }
             }
         },
@@ -418,7 +423,7 @@ console.log("emulsifiant : "+ emulsifiant);
         })
         progress += 1;
         bar.animate(progress / 9);
-	print_debug();
+        print_debug();
     }
 
     function hide_question() {
@@ -437,6 +442,8 @@ console.log("emulsifiant : "+ emulsifiant);
     $(document).on('click', '#yes_button', function () {
         hide_question();
         setTimeout(function () {
+
+            tree[current_node]["choice_yes"]["resultat"]();
             current_node = tree[current_node]["choice_yes"]["noeud"];
             if (current_node !== "END") {
                 update_question(nodes[current_node]);
@@ -452,6 +459,7 @@ console.log("emulsifiant : "+ emulsifiant);
     $(document).on('click', '#no_button', function () {
         hide_question();
         setTimeout(function () {
+            tree[current_node]["choice_no"]["resultat"]();
             current_node = tree[current_node]["choice_no"]["noeud"];
             if (current_node !== "END") {
                 update_question(nodes[current_node]);
@@ -469,10 +477,13 @@ console.log("emulsifiant : "+ emulsifiant);
         setTimeout(function () {
             value = $('#slider_range').val();
             if (is_value_in_range(value, tree[current_node]["choice_low"]["reponse"])) {
+                tree[current_node]["choice_low"]["resultat"]();
                 current_node = tree[current_node]["choice_low"]["noeud"];
             } else if (is_value_in_range(value, tree[current_node]["choice_high"]["reponse"])) {
+                tree[current_node]["choice_high"]["resultat"]();
                 current_node = tree[current_node]["choice_high"]["noeud"];
             } else if (is_value_in_range(value, tree[current_node]["choice_middle"]["reponse"])) {
+                tree[current_node]["choice_middle"]["resultat"]();
                 current_node = tree[current_node]["choice_middle"]["noeud"];
             }
             if (current_node !== "END") {
