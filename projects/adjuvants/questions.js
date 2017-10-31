@@ -1,8 +1,7 @@
 $(function () {
 
 
-    var BUTTONS_YES_NO = `<button id="yes_button" class="mdl-button mdl-button--raised mdl-button--accent">Oui</button>
-        <button id="no_button" class="mdl-button mdl-button--raised mdl-button--accent">Non</button>`;
+    var BUTTONS_YES_NO = `<button id="no_button" class="mdl-button mdl-button--raised mdl-button--accent">Non</button><button id="yes_button" class="mdl-button mdl-button--raised mdl-button--accent">Oui</button>`;
     var BUTTON_OK = `<button id="ok_button" class="mdl-button mdl-button--raised mdl-button--accent">OK</button>`;
 
     var ANIMATION_TIME = 600;
@@ -57,7 +56,7 @@ $(function () {
         duree_courte;
 
     var current_node = "";
-    var progress = -1;
+    var progress = 0;
 
 
     var message = [];

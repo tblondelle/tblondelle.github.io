@@ -21,4 +21,4 @@ permalink: /posts/
 </div>
 
 
-<div class="center logo_site">-- &#68181; --</div>
+<div class="center logo_site">-- &#664; --</div>

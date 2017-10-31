@@ -4,11 +4,11 @@
     <title>tblondelle@home</title>
     <description>Personal website to store some projects that I needed and that I have done. 
 </description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 29 Oct 2017 20:51:14 +0100</pubDate>
-    <lastBuildDate>Sun, 29 Oct 2017 20:51:14 +0100</lastBuildDate>
-    <generator>Jekyll v3.5.2</generator>
+    <link>https://tblondelle.github.io/</link>
+    <atom:link href="https://tblondelle.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 01 Nov 2017 00:18:21 +0100</pubDate>
+    <lastBuildDate>Wed, 01 Nov 2017 00:18:21 +0100</lastBuildDate>
+    <generator>Jekyll v3.0.1</generator>
     
       <item>
         <title>Example 2</title>
@@ -20,8 +20,8 @@
 
 </description>
         <pubDate>Fri, 06 Oct 2017 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/2017/10/06/example2.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/10/06/example2.html</guid>
+        <link>https://tblondelle.github.io/2017/10/06/example2.html</link>
+        <guid isPermaLink="true">https://tblondelle.github.io/2017/10/06/example2.html</guid>
         
         
       </item>
@@ -36,8 +36,8 @@
 
 </description>
         <pubDate>Sat, 16 Sep 2017 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/2017/09/16/making-true-robot.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/16/making-true-robot.html</guid>
+        <link>https://tblondelle.github.io/2017/09/16/making-true-robot.html</link>
+        <guid isPermaLink="true">https://tblondelle.github.io/2017/09/16/making-true-robot.html</guid>
         
         
       </item>
