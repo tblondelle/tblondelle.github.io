@@ -15,7 +15,7 @@ body {
     overflow-x: hidden;
 }
 
-    
+
 /*
 Palette
     http://paletton.com/#uid=12-0u0kpit0fCDWkIvqt1opvJjo
@@ -29,11 +29,7 @@ main {
     padding: 10px;
 }
 
-#question-card {
-    display: none;
-}
-
-.question-card {
+.card {
     background-color: white;
     border-radius: 3px;
     box-shadow: 0px 0px 10px grey;
@@ -41,20 +37,20 @@ main {
     max-width: 500px;
 }
 
-.question-card-text {
+.card-text {
     padding: 20px;
 }
-
-.card-propertext {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    font-weight: bold;
-}
-
 
 .card-title {
     padding-bottom: 10px;
     font-size: x-large;
+}
+
+.card-infotext {}
+
+.card-question {
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 .card-actions {
@@ -68,16 +64,19 @@ main {
     justify-content: space-around;
 }
 
-#label {
-    font-weight: bold;
+#question-card {
+    display: none;
 }
 
-.result-card {
-    display:none;
-    background-color: white;
-    border-radius: 3px;
-    box-shadow: 0px 0px 10px grey;
-    margin: 10px auto;
-    max-width: 500px;
-    padding: 20px;
+#result-card {
+    display: none;
+}
+
+#result-card .card-infotext {
+    text-align:justify;
+}
+
+
+#label {
+    font-weight: bold;
 }

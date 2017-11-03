@@ -19,8 +19,8 @@ $(function () {
 
 
     function print_debug() {
-        console.log("viscosite : " + viscosite);
-        console.log("diametre : " + diametre);
+        //console.log("viscosite : " + viscosite);
+        //console.log("diametre : " + diametre);
         console.log("cristaux : " + cristaux);
         console.log("humidite : " + humidite);
         console.log("temp_eleve : " + temp_eleve);
@@ -30,23 +30,23 @@ $(function () {
         console.log("pluie : " + pluie);
         console.log("durete : " + durete);
         console.log("duree_courte : " + duree_courte);
-        console.log("humectant : " + humectant);
-        console.log("acidifiant : " + acidifiant);
-        console.log("emulsifiant : " + emulsifiant);
+        //console.log("humectant : " + humectant);
+        //console.log("acidifiant : " + acidifiant);
+        //console.log("emulsifiant : " + emulsifiant);
         console.log("========================");
     }
 
     // variables de parametres
-    var diametre = 0,
+    /*var diametre = 0,
         viscosite = false,
         humectant = false,
         acidifiant = false,
-        emulsifiant = false;
+        emulsifiant = false;*/
 
 
     // variables de réponses
     var cristaux,
-        humidite = 20,
+        humidite,
         temp_eleve,
         cleaner,
         low_ph,
@@ -67,96 +67,50 @@ $(function () {
 
 
 
-        $('.question-card').html("");
+        $('#question-card').html("");
         $('.card-title').html("Résultats");
 
 
-        $(".result-card").fadeIn(600, function () {
+        $("#result-card").fadeIn(600, function () {
             // Animation complete
         });
 
 
-        var message = $('.card-propertext')
-        message.html("");
-
-
-
-
-        if (humidite < 30) {
-            humectant = true;
-        } else {
-            humectant = false;
-        }
-
-        if (temp_eleve) {
-            humectant = true;
-            diametre += 1;
-        }
-
-        if (vent_fort !== undefined) {
-            humectant = !vent_fort;
-        }
-        if (low_ph !== undefined) {
-            acidifiant = !low_ph;
-        }
-
-        emulsifiant = 1 - diametre;
-        viscosite = cristaux;
-
+        var question = $('.card-question')
+        var infotext = $('.card-infotext')
+        question.html("");
+        infotext.html("");
 
 
         print_debug();
 
 
         if (cristaux) {
-            message.append("<p>La présence de cristaux de cire impose d'augmenter la viscosité du produit pour éviter le rebond des gouttes.</p>");
-        } else {
-            message.append("<p>Pas de cristaux.</p>");
+            infotext.append("Il vous faut utiliser des surfactants pour que les gouttes s'étalent sur la feuille, et des polymères, qui augmenteront la viscosité des gouttes, ce qui facilitera leur adhésion. ");
+        } else if (vent_fort) {
+            infotext.append("Des polymères ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. ");
         }
 
         if (humidite < 30) {
-            message.append("<p>Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite.</p>")
-        } else {
-            message.append("<p>Les conditions climatiques imposent d'ajouter des humectants pour que le produit s'évapore moins vite.</p>");
+            infotext.append("Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite. ");
+        } else if ((humidite < 70) && (temp_eleve || vent_fort)) {
+                infotext.append("Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite. ");
         }
-
-        if (viscosite) {
-            message.append("<p>Pour éviter que les gouttes ne rebondissent, il nous faut aussi diminuer le diamètre de la goutte au contact de la feuille.</p>")
-        } else {
-            message.append("<p>Pour éviter que les gouttes ne rebondissent, il nous faut diminuer le diamètre de la goutte au contact de la feuille.</p>")
-        }
-
-        if (humectant && emulsifiant === 0) {
-            message.append("<p>Au vu des conditions météorologiques, comme l'évaporation diminue déjà le diamètre de goutte durant son trajet, nous n'ajoutons pas d'émulsifiants");
-        } else if (!humectant && emulsifiant > 0) {
-            message.append("<p>Il nous faut donc des émulsifiants pour diminuer le diamètre en sortie de buse.</p>")
-        } else if (humectant && emulsifiant > 0) {
-            message.append("<p>L'évaporation ne suffit pas à obtenir un diamètre assez faible lorsque la goutte arrive sur la feuille, il nous faut donc ajouter des émulsifiants pour augmenter le diamètre en sortie de buse.</p>")
-        } // Le quatrième cas ne peut pas se produire.
 
         if (pluie) {
-            message.append("<p>Pour éviter que la pluie ne rince le produit, il est conseillé d'y ajouter un produit sticker.</p>")
+            infotext.append("Pour éviter que la pluie ne rince le produit, il est conseillé d'y ajouter un produit sticker. ");
         }
 
-        if (acidifiant === true) {
-            message.append("<p>L'ajout d'acidifiant empêche que le principe actif ne soit détruit avant d'être efficace.</p>")
+        if (low_ph === false) {
+            infotext.append("L'ajout d'acidifiant empêche que le principe actif ne soit détruit avant d'être efficace. ");
         }
 
-        if (cleaner === true) {
-            message.append('<p>Un tank cleaner vous permettra de mieux nettoyer votre réservoir.</p>')
+        if (cleaner) {
+            infotext.append("Un tank cleaner vous permettra de mieux nettoyer votre réservoir. ");
         }
-
-        if (!duree_courte) {
-            message.append("<p>Les différents composants de votre produit risquent de se séparer par décantation. Un dispersant permet d'éviter cela.</p>")
+        if (duree_courte === false) {
+            infotext.append("Les différents composants de votre produit risquent de se séparer par décantation. Un dispersant permet d'éviter cela. ");
         }
-
-
-
-
-
-
-
-
     }
 
     /**
@@ -167,56 +121,56 @@ $(function () {
     var nodes = {
         feuille: {
             title: "Type de feuille",
-            text: "Y a t-il des cristaux de cire sur la plante à traiter ?",
-            additionaltext: "Le saviez-vous ? 	La surface de la feuille est recouverte par une couche hydrophobe protective. Il peut s’agir d’une simple couche cireuse (certaines feuilles de pommiers ou de vignes par exemple) ou d’une couche cireuse recouverte de cristaux de cire, formant une surface rugueuse (céréales, phases précoces de maïs et de soja…). La présence de cristaux de cire influe sur le dépôt des gouttelettes de pesticide à la surface de la feuille. ",
+            question: "Y a t-il des cristaux de cire sur la plante à traiter ?",
+            infotext: "La surface de la feuille est recouverte par une couche hydrophobe protective. Il peut s’agir d’une simple couche cireuse (certaines feuilles de pommiers ou de vignes par exemple) ou d’une couche cireuse recouverte de cristaux de cire, formant une surface rugueuse (céréales, phases précoces de maïs et de soja…). La présence de cristaux de cire influe sur le dépôt des gouttelettes de pesticide à la surface de la feuille. ",
             actions: BUTTONS_NO_YES
         },
         humidite: {
             title: "Humidité",
-            text: "Indiquez le taux d'humidité local :",
-            additionaltext: "Le saviez-vous ?	Le taux d’humidité influe sur la volatilisation, c’est-à-dire l’évaporation de l’eau présente dans la bouillie. On cherche à ralentir au maximum la vitesse d’évaporation.",
+            question: "Indiquez le taux d'humidité local :",
+            infotext: "Le taux d’humidité influe sur la volatilisation, c’est-à-dire l’évaporation de l’eau présente dans la bouillie. On cherche à ralentir au maximum la vitesse d’évaporation.",
             actions: generate_range_html(0, 100, 50, '%', 5)
         },
         temperature: {
             title: "Température",
-            text: "Indiquez la température actuelle :",
-            additionaltext: "Le saviez-vous ?	La température influe sur la volatilisation, c’est-à-dire l’évaporation de l’eau présente dans la bouillie. On cherche à ralentir au maximum la vitesse d’évaporation. ",
+            question: "Indiquez la température actuelle :",
+            infotext: "La température influe sur la volatilisation, c’est-à-dire l’évaporation de l’eau présente dans la bouillie. On cherche à ralentir au maximum la vitesse d’évaporation. ",
             actions: generate_range_html(-20, 40, 10, '°C')
         },
         ph: {
             title: "pH",
-            text: "Indiquez le pH de l'eau que vous utilisez :",
-            additionaltext: "Le saviez-vous ? 	Les principes actifs peuvent être dégradés si le pH de l’eau est supérieur à 7.",
+            question: "Indiquez le pH de l'eau que vous utilisez :",
+            infotext: "Les principes actifs peuvent être dégradés si le pH de l’eau est supérieur à&nbsp;7.",
             actions: generate_range_html(0, 14, 7, '')
         },
         vent: {
             title: "Vent",
-            text: "Indiquez la vitesse du vent :",
-            additionaltext: "Le saviez-vous ?	La présence de vent accélère l’évaporation des gouttes, et augmente l’effet de dérive au moment de la pulvérisation.    <br> Attention ! Le vent est supérieur à 19 km/h ? La pulvérisation de pesticide est strictement interdite en Europe et fortement déconseillée ailleurs : le vent fort accentue en effet nettement dérive et contribue à disperser des composés potentiellement toxiques dans l'environnement !",
+            question: "Indiquez la vitesse du vent :",
+            infotext: "La présence de vent accélère l’évaporation des gouttes, et augmente l’effet de dérive au moment de la pulvérisation.    <br> <i style='color: darkred'>Attention ! Le vent est supérieur à 19 km/h ? La pulvérisation de pesticide est strictement interdite en Europe et fortement déconseillée ailleurs : le vent fort accentue en effet nettement la dérive et contribue à disperser des composés potentiellement toxiques dans l'environnement !</i>",
             actions: generate_range_html(0, 19, 10, ' km/h')
         },
         durete: {
             title: "Dureté de l'eau",
-            text: "L’eau utilisée est-elle une eau dure ?",
-            additionaltext: "Le saviez-vous ?	Une eau dure est une eau riche en ions (Ca2+, Mg2+, Fe2+), qui peuvent former des complexes avec les principes actifs et les rendre inefficaces.",
+            question: "L’eau utilisée est-elle une eau dure ?",
+            infotext: "Une eau dure est une eau riche en ions (Ca2+, Mg2+, Fe2+), qui peuvent former des complexes avec les principes actifs et les rendre inefficaces.",
             actions: BUTTONS_NO_YES
         },
         pluie: {
             title: "Pluie",
-            text: "Va-t-il pleuvoir peu de temps après la pulvérisation du pesticide dans les cultures ?",
-            additionaltext: "Le saviez-vous ?	En cas de pluie, le pesticide risque d’être lessivé avant que le principe actif ait pénétré dans la feuille. Celui-ci risque d’être dispersé dans l’environnement. ",
+            question: "Va-t-il pleuvoir peu de temps après la pulvérisation du pesticide dans les cultures ?",
+            infotext: "En cas de pluie, le pesticide risque d’être lessivé avant que le principe actif ait pénétré dans la feuille. Celui-ci risque d’être dispersé dans l’environnement. ",
             actions: BUTTONS_NO_YES
         },
         cleaner: {
             title: "Agents nettoyants",
-            text: "Votre cuve a-t-elle besoin d’être nettoyée ?",
-            additionaltext: "Le saviez-vous ?	Des adjuvants appelés tank cleaners peuvent être ajoutés à la bouillie. Ils permettent d’éliminer les dépôts et débris accumulés au cours du temps. ",
+            question: "Votre cuve a-t-elle besoin d’être nettoyée ?",
+            infotext: "Des adjuvants appelés <i>tank cleaners</i> peuvent être ajoutés à la bouillie. Ils permettent d’éliminer les dépôts et débris accumulés au cours du temps. ",
             actions: BUTTONS_NO_YES
         },
         duree: {
             title: "Conservation",
-            text: "Le mélange que vous allez préparer sera-t-il intégralement utilisé dans les 24 heures ?",
-            additionaltext: "",
+            question: "Le mélange que vous allez préparer sera-t-il intégralement utilisé dans les 24 heures ?",
+            infotext: "Les différents agents chimiques peuvent décanter au fond de la cuve s’ils sont stockés trop longtemps, ce qui pose problème au moment de la pulvérisation. ",
             actions: BUTTONS_NO_YES
         }
     }
@@ -423,12 +377,13 @@ $(function () {
 
     function update_question(node) {
         $(".card-title").html(node["title"]);
-        $(".card-propertext").html(node["text"]);
-        $(".card-additionaltext").html(node["additionaltext"]);
+        $(".card-infotext").html(node["infotext"]);
+        $(".card-question").html(node["question"]);
         $(".card-actions").html(node["actions"]);
         componentHandler.upgradeDom(); //Update MDL components
         $('#slider_range').on("input change", function () {
-            $("#label_value").html($(this).val()); // Change the label for sliders.
+            // Change the bottom label for the slider.
+            $("#label_value").html($(this).val()); 
         })
         progress += 1;
         bar.animate(progress / 9);
@@ -460,9 +415,7 @@ $(function () {
             } else {
                 ending();
             }
-
         }, ANIMATION_TIME - 50);
-
     });
 
     $(document).on('click', '#no_button', function () {
@@ -476,8 +429,6 @@ $(function () {
             } else {
                 ending();
             }
-
-
         }, ANIMATION_TIME - 50);
     });
 
@@ -501,9 +452,6 @@ $(function () {
             } else {
                 ending();
             }
-
-
-
         }, ANIMATION_TIME - 50);
     });
 
@@ -533,14 +481,11 @@ $(function () {
      */
 
     $("#start").click(function () {
-        $("#splash-screen").remove();
+        $("#splash-card").remove();
         current_node = "feuille";
         update_question(nodes[current_node]);
-        $(".question-card").css("display", "block");
+        $("#question-card").css("display", "block");
         show_question();
     });
-
-
-
 
 });
