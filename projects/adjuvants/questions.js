@@ -1,14 +1,14 @@
 $(function () {
 
 
-    var BUTTONS_YES_NO = `<button id="no_button" class="mdl-button mdl-button--raised mdl-button--accent">Non</button><button id="yes_button" class="mdl-button mdl-button--raised mdl-button--accent">Oui</button>`;
+    var BUTTONS_NO_YES = `<button id="no_button" class="mdl-button mdl-button--raised mdl-button--accent">Non</button><button id="yes_button" class="mdl-button mdl-button--raised mdl-button--accent">Oui</button>`;
     var BUTTON_OK = `<button id="ok_button" class="mdl-button mdl-button--raised mdl-button--accent">OK</button>`;
 
     var ANIMATION_TIME = 600;
 
-    function generate_range_html(min, max, default_value, unite) {
+    function generate_range_html(min, max, default_value, unite, step = 1) {
         return ` <p style="width:300px; margin:auto 0">` + "" + `<input id="slider_range" class="mdl-slider mdl-js-slider" type="range"
-  min="` + min + `" max="` + max + `" tabindex="0"><span id='label'><span id='label_value'>` + default_value + `</span>` + unite + `</span></p>` + BUTTON_OK;
+  min="` + min + `" max="` + max + `" value="` + default_value + `" step = "` + step + `" tabindex="0"><span id='label'><span id='label_value'>` + default_value + `</span>` + unite + `</span></p>` + BUTTON_OK;
     }
 
 
@@ -109,45 +109,45 @@ $(function () {
 
 
         if (cristaux) {
-            message.append("<p>1 La présence de cristaux de cire impose d'augmenter la viscosité du produit pour éviter le rebond des gouttes.</p>");
+            message.append("<p>La présence de cristaux de cire impose d'augmenter la viscosité du produit pour éviter le rebond des gouttes.</p>");
         } else {
-            message.append("<p>1bis. Pas de cristaux.</p>");
+            message.append("<p>Pas de cristaux.</p>");
         }
 
         if (humidite < 30) {
-            message.append("<p>2. Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite.</p>")
+            message.append("<p>Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite.</p>")
         } else {
-            message.append("<p>3. Les conditions climatiques imposent d'ajouter des humectants pour que le produit s'évapore moins vite.</p>");
+            message.append("<p>Les conditions climatiques imposent d'ajouter des humectants pour que le produit s'évapore moins vite.</p>");
         }
 
         if (viscosite) {
-            message.append("<p>4. Pour éviter que les gouttes ne rebondissent, il nous faut aussi diminuer le diamètre de la goutte au contact de la feuille.</p>")
+            message.append("<p>Pour éviter que les gouttes ne rebondissent, il nous faut aussi diminuer le diamètre de la goutte au contact de la feuille.</p>")
         } else {
-            message.append("<p>5. Pour éviter que les gouttes ne rebondissent, il nous faut diminuer le diamètre de la goutte au contact de la feuille.</p>")
+            message.append("<p>Pour éviter que les gouttes ne rebondissent, il nous faut diminuer le diamètre de la goutte au contact de la feuille.</p>")
         }
 
         if (humectant && emulsifiant === 0) {
-            message.append("<p>6. Au vu des conditions météorologiques, comme l'évaporation diminue déjà le diamètre de goutte durant son trajet, nous n'ajoutons pas d'émulsifiants");
+            message.append("<p>Au vu des conditions météorologiques, comme l'évaporation diminue déjà le diamètre de goutte durant son trajet, nous n'ajoutons pas d'émulsifiants");
         } else if (!humectant && emulsifiant > 0) {
-            message.append("<p>7. Il nous faut donc des émulsifiants pour diminuer le diamètre en sortie de buse.</p>")
+            message.append("<p>Il nous faut donc des émulsifiants pour diminuer le diamètre en sortie de buse.</p>")
         } else if (humectant && emulsifiant > 0) {
-            message.append("<p>8. L'évaporation ne suffit pas à obtenir un diamètre assez faible lorsque la goutte arrive sur la feuille, il nous faut donc ajouter des émulsifiants pour augmenter le diamètre en sortie de buse.</p>")
+            message.append("<p>L'évaporation ne suffit pas à obtenir un diamètre assez faible lorsque la goutte arrive sur la feuille, il nous faut donc ajouter des émulsifiants pour augmenter le diamètre en sortie de buse.</p>")
         } // Le quatrième cas ne peut pas se produire.
 
         if (pluie) {
-            message.append("<p>9. Pour éviter que la pluie ne rince le produit, il est conseillé d'y ajouter un produit sticker.</p>")
+            message.append("<p>Pour éviter que la pluie ne rince le produit, il est conseillé d'y ajouter un produit sticker.</p>")
         }
 
         if (acidifiant === true) {
-            message.append("<p>10. L'ajout d'acidifiant empêche que le principe actif ne soit détruit avant d'être efficace.</p>")
+            message.append("<p>L'ajout d'acidifiant empêche que le principe actif ne soit détruit avant d'être efficace.</p>")
         }
 
         if (cleaner === true) {
-            message.append('<p>11. Un tank cleaner vous permettra de mieux nettoyer votre réservoir.</p>')
+            message.append('<p>Un tank cleaner vous permettra de mieux nettoyer votre réservoir.</p>')
         }
 
         if (!duree_courte) {
-            message.append("<p>12. Les différents composants de votre produit risquent de se séparer par décantation. Un dispersant permet d'éviter cela.</p>")
+            message.append("<p>Les différents composants de votre produit risquent de se séparer par décantation. Un dispersant permet d'éviter cela.</p>")
         }
 
 
@@ -168,47 +168,56 @@ $(function () {
         feuille: {
             title: "Type de feuille",
             text: "Y a t-il des cristaux de cire sur la plante à traiter ?",
-            actions: BUTTONS_YES_NO
+            additionaltext: "Le saviez-vous ? 	La surface de la feuille est recouverte par une couche hydrophobe protective. Il peut s’agir d’une simple couche cireuse (certaines feuilles de pommiers ou de vignes par exemple) ou d’une couche cireuse recouverte de cristaux de cire, formant une surface rugueuse (céréales, phases précoces de maïs et de soja…). La présence de cristaux de cire influe sur le dépôt des gouttelettes de pesticide à la surface de la feuille. ",
+            actions: BUTTONS_NO_YES
         },
         humidite: {
             title: "Humidité",
             text: "Indiquez le taux d'humidité local :",
-            actions: generate_range_html(0, 100, 50, '%')
+            additionaltext: "Le saviez-vous ?	Le taux d’humidité influe sur la volatilisation, c’est-à-dire l’évaporation de l’eau présente dans la bouillie. On cherche à ralentir au maximum la vitesse d’évaporation.",
+            actions: generate_range_html(0, 100, 50, '%', 5)
         },
         temperature: {
-            title: "Temperature",
+            title: "Température",
             text: "Indiquez la température actuelle :",
-            actions: generate_range_html(-20, 20, 0, '°C')
+            additionaltext: "Le saviez-vous ?	La température influe sur la volatilisation, c’est-à-dire l’évaporation de l’eau présente dans la bouillie. On cherche à ralentir au maximum la vitesse d’évaporation. ",
+            actions: generate_range_html(-20, 40, 10, '°C')
         },
         ph: {
             title: "pH",
-            text: "Indiquez le pH de l'eau que vous utilisez",
+            text: "Indiquez le pH de l'eau que vous utilisez :",
+            additionaltext: "Le saviez-vous ? 	Les principes actifs peuvent être dégradés si le pH de l’eau est supérieur à 7.",
             actions: generate_range_html(0, 14, 7, '')
         },
         vent: {
             title: "Vent",
             text: "Indiquez la vitesse du vent :",
-            actions: generate_range_html(0, 19, 10, 'km/h')
+            additionaltext: "Le saviez-vous ?	La présence de vent accélère l’évaporation des gouttes, et augmente l’effet de dérive au moment de la pulvérisation.    <br> Attention ! Le vent est supérieur à 19 km/h ? La pulvérisation de pesticide est strictement interdite en Europe et fortement déconseillée ailleurs : le vent fort accentue en effet nettement dérive et contribue à disperser des composés potentiellement toxiques dans l'environnement !",
+            actions: generate_range_html(0, 19, 10, ' km/h')
         },
         durete: {
             title: "Dureté de l'eau",
-            text: "L'eau est-elle riche en ions (calcium, magnésium, fer) ?",
-            actions: BUTTONS_YES_NO
+            text: "L’eau utilisée est-elle une eau dure ?",
+            additionaltext: "Le saviez-vous ?	Une eau dure est une eau riche en ions (Ca2+, Mg2+, Fe2+), qui peuvent former des complexes avec les principes actifs et les rendre inefficaces.",
+            actions: BUTTONS_NO_YES
         },
         pluie: {
             title: "Pluie",
-            text: "Pleut-il souvent lorsque vous pulvérisez des pesticides sur vos cultures ?",
-            actions: BUTTONS_YES_NO
+            text: "Va-t-il pleuvoir peu de temps après la pulvérisation du pesticide dans les cultures ?",
+            additionaltext: "Le saviez-vous ?	En cas de pluie, le pesticide risque d’être lessivé avant que le principe actif ait pénétré dans la feuille. Celui-ci risque d’être dispersé dans l’environnement. ",
+            actions: BUTTONS_NO_YES
         },
         cleaner: {
             title: "Agents nettoyants",
-            text: "Votre cuve a t-elle du mal à être nettoyée?",
-            actions: BUTTONS_YES_NO
+            text: "Votre cuve a-t-elle besoin d’être nettoyée ?",
+            additionaltext: "Le saviez-vous ?	Des adjuvants appelés tank cleaners peuvent être ajoutés à la bouillie. Ils permettent d’éliminer les dépôts et débris accumulés au cours du temps. ",
+            actions: BUTTONS_NO_YES
         },
         duree: {
             title: "Conservation",
             text: "Le mélange que vous allez préparer sera-t-il intégralement utilisé dans les 24 heures ?",
-            actions: BUTTONS_YES_NO
+            additionaltext: "",
+            actions: BUTTONS_NO_YES
         }
     }
 
@@ -415,6 +424,7 @@ $(function () {
     function update_question(node) {
         $(".card-title").html(node["title"]);
         $(".card-propertext").html(node["text"]);
+        $(".card-additionaltext").html(node["additionaltext"]);
         $(".card-actions").html(node["actions"]);
         componentHandler.upgradeDom(); //Update MDL components
         $('#slider_range').on("input change", function () {

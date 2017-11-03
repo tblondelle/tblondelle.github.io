@@ -15,7 +15,7 @@ body {
     overflow-x: hidden;
 }
 
-
+    
 /*
 Palette
     http://paletton.com/#uid=12-0u0kpit0fCDWkIvqt1opvJjo
@@ -48,7 +48,9 @@ main {
 .card-propertext {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    font-weight: bold;
 }
+
 
 .card-title {
     padding-bottom: 10px;
