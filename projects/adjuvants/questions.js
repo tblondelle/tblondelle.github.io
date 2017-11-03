@@ -19,8 +19,6 @@ $(function () {
 
 
     function print_debug() {
-        //console.log("viscosite : " + viscosite);
-        //console.log("diametre : " + diametre);
         console.log("cristaux : " + cristaux);
         console.log("humidite : " + humidite);
         console.log("temp_eleve : " + temp_eleve);
@@ -30,18 +28,8 @@ $(function () {
         console.log("pluie : " + pluie);
         console.log("durete : " + durete);
         console.log("duree_courte : " + duree_courte);
-        //console.log("humectant : " + humectant);
-        //console.log("acidifiant : " + acidifiant);
-        //console.log("emulsifiant : " + emulsifiant);
         console.log("========================");
     }
-
-    // variables de parametres
-    /*var diametre = 0,
-        viscosite = false,
-        humectant = false,
-        acidifiant = false,
-        emulsifiant = false;*/
 
 
     // variables de réponses
@@ -86,30 +74,30 @@ $(function () {
 
 
         if (cristaux) {
-            infotext.append("Il vous faut utiliser des surfactants pour que les gouttes s'étalent sur la feuille, et des polymères, qui augmenteront la viscosité des gouttes, ce qui facilitera leur adhésion. ");
+            infotext.append("<p>Il vous faut utiliser des surfactants pour que les gouttes s'étalent sur la feuille, et des polymères, pour augmenter la viscosité des gouttes, ce qui facilitera leur adhésion. Le <b>LI 700 (De Sangosse)</b> par exemple est constitué d’agents mouillants permettant un bon  étalement des gouttes à la surface des feuilles. Des produits tels que <b>Adigor (Agridyne)</b> ou <b>Actirob B (Bayer)</b> vous permettront de faciliter la pénétration dans la structure foliaire. </p>");
         } else if (vent_fort) {
-            infotext.append("Des polymères ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. ");
+            infotext.append("<p>Des polymères ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
         }
 
         if (humidite < 30) {
-            infotext.append("Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite. ");
+            infotext.append("<p>Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite. </p>");
         } else if ((humidite < 70) && (temp_eleve || vent_fort)) {
-                infotext.append("Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite. ");
+                infotext.append("<p>Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite. Vous pouvez, par exemple, ajouter de <b>l’Actimum (De Sangosse)</b>. </p>");
         }
 
         if (pluie) {
-            infotext.append("Pour éviter que la pluie ne rince le produit, il est conseillé d'y ajouter un produit sticker. ");
+            infotext.append("<p>Pour éviter que la pluie ne rince le produit, il est conseillé d'y ajouter un produit adhésif. Utilisez par exemple <b>Sticman (De Sangosse)</b>. Attention, ce produit est à introduire en dernier dans la cuve.</p>");
         }
 
         if (low_ph === false) {
-            infotext.append("L'ajout d'acidifiant empêche que le principe actif ne soit détruit avant d'être efficace. ");
+            infotext.append("<p>L'ajout d'acidifiant empêche que le principe actif ne soit détruit avant d'être efficace. Utilisez par exemple <b>X-Change (De Sangosse)</b></p>");
         }
 
         if (cleaner) {
-            infotext.append("Un tank cleaner vous permettra de mieux nettoyer votre réservoir. ");
+            infotext.append("<p>Un tank cleaner vous permettra de mieux nettoyer votre réservoir. </p>");
         }
         if (duree_courte === false) {
-            infotext.append("Les différents composants de votre produit risquent de se séparer par décantation. Un dispersant permet d'éviter cela. ");
+            infotext.append("<p>Les différents composants de votre produit risquent de se séparer par décantation. Un dispersant permet d'éviter cela.</p> ");
         }
     }
 
@@ -152,7 +140,7 @@ $(function () {
         durete: {
             title: "Dureté de l'eau",
             question: "L’eau utilisée est-elle une eau dure ?",
-            infotext: "Une eau dure est une eau riche en ions (Ca2+, Mg2+, Fe2+), qui peuvent former des complexes avec les principes actifs et les rendre inefficaces.",
+            infotext: "Une eau dure est une eau riche en ions (Ca<sup>2+</sup>, Mg<sup>2+</sup>, Fe<sup>2+</sup>), qui peuvent former des complexes avec les principes actifs et les rendre inefficaces.",
             actions: BUTTONS_NO_YES
         },
         pluie: {
@@ -164,13 +152,13 @@ $(function () {
         cleaner: {
             title: "Agents nettoyants",
             question: "Votre cuve a-t-elle besoin d’être nettoyée ?",
-            infotext: "Des adjuvants appelés <i>tank cleaners</i> peuvent être ajoutés à la bouillie. Ils permettent d’éliminer les dépôts et débris accumulés au cours du temps. ",
+            infotext: "Des adjuvants appelés <i>tank cleaners</i> peuvent être ajoutés à la bouillie. Ils permettent d’éliminer les dépôts et débris accumulés dans la cuve au cours du temps. ",
             actions: BUTTONS_NO_YES
         },
         duree: {
             title: "Conservation",
             question: "Le mélange que vous allez préparer sera-t-il intégralement utilisé dans les 24 heures ?",
-            infotext: "Les différents agents chimiques peuvent décanter au fond de la cuve s’ils sont stockés trop longtemps, ce qui pose problème au moment de la pulvérisation. ",
+            infotext: "Les différents agents chimiques peuvent décanter au fond de la cuve s’ils sont stockés trop longtemps, ce qui pose problème au moment de la pulvérisation. Des produits dispersants peuvent être ajoutés afin d’assurer l’homogénéisation de la solution. ",
             actions: BUTTONS_NO_YES
         }
     }
@@ -465,7 +453,7 @@ $(function () {
         easing: 'easeInOut',
         duration: 1000,
         color: '#428A01',
-        trailColor: '#AFEC79',
+        trailColor: '#D8F687',
         trailWidth: 1,
         svgStyle: {
             width: '100%',

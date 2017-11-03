@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background-color: #78CF2B;
+    background-color: #ABD336;
     font-family: Nunito, Helvetica, sans-serif;
     min-height: calc(100% - 50px);
     margin: 0;
@@ -19,6 +19,7 @@ body {
 /*
 Palette
     http://paletton.com/#uid=12-0u0kpit0fCDWkIvqt1opvJjo
+    http://paletton.com/#uid=12j0C0knRrXeqDOjAuYrMnKuUiU (thème 2)
 */
 
 #container {
