@@ -79,23 +79,23 @@ $(function () {
             if (humidite < 30){
                 infotext.append("<p>Le climat sec impose d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite. </p>");
                 if (vent_fort){
-                    infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift  </p>");
+                    infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou un émulsifiant permettraient d'augmenter le diamètre des gouttes, pour éviter le drift  </p>");
                 }
             } else if (humidite < 70){
                 if (!temp_eleve){
                     if (vent_fort){
-                        infotext.append("<p>Le vent fort impose d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite. De plus, des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
+                        infotext.append("<p>Le vent fort impose d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite. De plus, des polymères (comme <b>la molécule polyacrylamide</b>) ou un émulsifiant permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
                     }
                 } else {
                     infotext.append("<p>La forte température impose d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite. </p>");
                     
                     if (vent_fort){
-                        infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
+                        infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou un émulsifiant permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
                     }
                 }
             } else {
                 if (vent_fort){
-                    infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
+                    infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou un émulsifiant permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
                 }
             }
         }
