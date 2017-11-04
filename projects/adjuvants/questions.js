@@ -63,32 +63,31 @@ $(function () {
 
         print_debug();
 
-
         if (cristaux) {
             infotext.append("<p>Il vous faut utiliser des surfactants pour que les gouttes s'étalent sur la feuille, et des polymères (comme <b>la molécule polyacrylamide</b>), pour augmenter la viscosité des gouttes, ce qui facilitera leur adhésion. Le <b>LI 700 (De Sangosse)</b> par exemple est constitué d’agents mouillants permettant un bon  étalement des gouttes à la surface des feuilles.  Des produits tels que <b>Adigor (Agridyne)</b> ou <b>Actirob B (Bayer)</b> vous permettront de faciliter la pénétration dans la structure foliaire. </p>");
 
             if (humidite < 30) {
-                infotext.append("<p>Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite. </p>");
+                infotext.append("<p>Le faible taux d'humidité impose d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite. </p>");
             } else if (humidite < 70) {
                 if (temp_eleve === false && vent_fort) {
-                    infotext.append("<p>Le faible taux d'humidité et le vent fort imposent d'ajouter des humectants pour que le produit s'évapore moins vite.</p>");
+                    infotext.append("<p>Le faible taux d'humidité et le vent fort imposent d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite.</p>");
                 } else if (temp_eleve){
-                    infotext.append("<p>La forte température impose d'ajouter des humectants pour que le produit s'évapore moins vite. </p>");
+                    infotext.append("<p>La forte température impose d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite. </p>");
                 }
             }
         } else {
             if (humidite < 30){
-                infotext.append("<p>Le climat sec impose d'ajouter des humectants pour que le produit s'évapore moins vite. </p>");
+                infotext.append("<p>Le climat sec impose d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite. </p>");
                 if (vent_fort){
                     infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift  </p>");
                 }
             } else if (humidite < 70){
                 if (!temp_eleve){
                     if (vent_fort){
-                        infotext.append("<p>Le vent fort impose d'ajouter des humectants pour que le produit s'évapore moins vite. De plus, des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
+                        infotext.append("<p>Le vent fort impose d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite. De plus, des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
                     }
                 } else {
-                    infotext.append("<p>La forte température impose d'ajouter des humectants pour que le produit s'évapore moins vite. </p>");
+                    infotext.append("<p>La forte température impose d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite. </p>");
                     
                     if (vent_fort){
                         infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
