@@ -6,31 +6,28 @@ $(function () {
 
     var ANIMATION_TIME = 600;
 
-    function generate_range_html(min, max, default_value, unite, step = 1) {
+    function generate_slider(min_value, max_value, default_value, unite, step = 1) {
         return ` <p style="width:300px; margin:auto 0">` + "" + `<input id="slider_range" class="mdl-slider mdl-js-slider" type="range"
-  min="` + min + `" max="` + max + `" value="` + default_value + `" step = "` + step + `" tabindex="0"><span id='label'><span id='label_value'>` + default_value + `</span>` + unite + `</span></p>` + BUTTON_OK;
+  min="` + min_value + `" max="` + max_value + `" value="` + default_value + `" step = "` + step + `" tabindex="0"><span id='label'><span id='label_value'>` + default_value + `</span>` + unite + `</span></p>` + BUTTON_OK;
     }
-
 
     function is_value_in_range(value, range) {
         //console.log(range[0] <= value && value <= range[1]);
         return (range[0] <= value && value <= range[1])
     }
 
-
     function print_debug() {
-        console.log("cristaux : " + cristaux);
-        console.log("humidite : " + humidite);
-        console.log("temp_eleve : " + temp_eleve);
-        console.log("cleaner : " + cleaner);
-        console.log("low_ph : " + low_ph);
-        console.log("vent_fort : " + vent_fort);
-        console.log("pluie : " + pluie);
-        console.log("durete : " + durete);
-        console.log("duree_courte : " + duree_courte);
-        console.log("========================");
+        console.log("=========VARIABLES===========");
+        console.log("cristaux:     " + cristaux);
+        console.log("humidite:     " + humidite);
+        console.log("temp_eleve:   " + temp_eleve);
+        console.log("vent_fort:    " + vent_fort);
+        console.log("low_ph:       " + low_ph);
+        console.log("durete:       " + durete);
+        console.log("pluie:        " + pluie);
+        console.log("cleaner:      " + cleaner);
+        console.log("duree_courte: " + duree_courte);
     }
-
 
     // variables de réponses
     var cristaux,
@@ -43,29 +40,23 @@ $(function () {
         durete,
         duree_courte;
 
-    var current_node = "";
-    var progress = 0;
+    var current_node = "",
+        progress = 0;
 
-
-    var message = [];
 
     function ending() {
 
         bar.animate(1);
 
-
-
         $('#question-card').html("");
-        $('.card-title').html("Résultats");
 
+        $("#result-card").fadeIn(600, function () {});
 
-        $("#result-card").fadeIn(600, function () {
-            // Animation complete
-        });
-
-
+        var title = $('.card-title');
         var question = $('.card-question')
         var infotext = $('.card-infotext')
+
+        title.html("Résultats");
         question.html("");
         infotext.html("");
 
@@ -74,17 +65,42 @@ $(function () {
 
 
         if (cristaux) {
-            infotext.append("<p>Il vous faut utiliser des surfactants pour que les gouttes s'étalent sur la feuille, et des polymères, pour augmenter la viscosité des gouttes, ce qui facilitera leur adhésion. Le <b>LI 700 (De Sangosse)</b> par exemple est constitué d’agents mouillants permettant un bon  étalement des gouttes à la surface des feuilles. Des produits tels que <b>Adigor (Agridyne)</b> ou <b>Actirob B (Bayer)</b> vous permettront de faciliter la pénétration dans la structure foliaire. </p>");
-        } else if (vent_fort) {
-            infotext.append("<p>Des polymères ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
-        }
+            infotext.append("<p>Il vous faut utiliser des surfactants pour que les gouttes s'étalent sur la feuille, et des polymères (comme <b>la molécule polyacrylamide</b>), pour augmenter la viscosité des gouttes, ce qui facilitera leur adhésion. Le <b>LI 700 (De Sangosse)</b> par exemple est constitué d’agents mouillants permettant un bon  étalement des gouttes à la surface des feuilles.  Des produits tels que <b>Adigor (Agridyne)</b> ou <b>Actirob B (Bayer)</b> vous permettront de faciliter la pénétration dans la structure foliaire. </p>");
 
-        if (humidite < 30) {
-            infotext.append("<p>Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite. </p>");
-        } else if ((humidite < 70) && (temp_eleve || vent_fort)) {
-                infotext.append("<p>Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite. Vous pouvez, par exemple, ajouter de <b>l’Actimum (De Sangosse)</b>. </p>");
+            if (humidite < 30) {
+                infotext.append("<p>Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite. </p>");
+            } else if (humidite < 70) {
+                if (temp_eleve === false && vent_fort) {
+                    infotext.append("<p>Le faible taux d'humidité et le vent fort imposent d'ajouter des humectants pour que le produit s'évapore moins vite.</p>");
+                } else if (temp_eleve){
+                    infotext.append("<p>La forte température impose d'ajouter des humectants pour que le produit s'évapore moins vite. </p>");
+                }
+            }
+        } else {
+            if (humidite < 30){
+                infotext.append("<p>Le climat sec impose d'ajouter des humectants pour que le produit s'évapore moins vite. </p>");
+                if (vent_fort){
+                    infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift  </p>");
+                }
+            } else if (humidite < 70){
+                if (!temp_eleve){
+                    if (vent_fort){
+                        infotext.append("<p>Le vent fort impose d'ajouter des humectants pour que le produit s'évapore moins vite. De plus, des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
+                    }
+                } else {
+                    infotext.append("<p>La forte température impose d'ajouter des humectants pour que le produit s'évapore moins vite. </p>");
+                    
+                    if (vent_fort){
+                        infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
+                    }
+                }
+            } else {
+                if (vent_fort){
+                    infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
+                }
+            }
         }
-
+        
         if (pluie) {
             infotext.append("<p>Pour éviter que la pluie ne rince le produit, il est conseillé d'y ajouter un produit adhésif. Utilisez par exemple <b>Sticman (De Sangosse)</b>. Attention, ce produit est à introduire en dernier dans la cuve.</p>");
         }
@@ -117,25 +133,25 @@ $(function () {
             title: "Humidité",
             question: "Indiquez le taux d'humidité local :",
             infotext: "Le taux d’humidité influe sur la volatilisation, c’est-à-dire l’évaporation de l’eau présente dans la bouillie. On cherche à ralentir au maximum la vitesse d’évaporation.",
-            actions: generate_range_html(0, 100, 50, '%', 5)
+            actions: generate_slider(0, 100, 50, '%', 5)
         },
         temperature: {
             title: "Température",
             question: "Indiquez la température actuelle :",
             infotext: "La température influe sur la volatilisation, c’est-à-dire l’évaporation de l’eau présente dans la bouillie. On cherche à ralentir au maximum la vitesse d’évaporation. ",
-            actions: generate_range_html(-20, 40, 10, '°C')
+            actions: generate_slider(-20, 40, 10, '°C')
         },
         ph: {
             title: "pH",
             question: "Indiquez le pH de l'eau que vous utilisez :",
             infotext: "Les principes actifs peuvent être dégradés si le pH de l’eau est supérieur à&nbsp;7.",
-            actions: generate_range_html(0, 14, 7, '')
+            actions: generate_slider(0, 14, 7, '')
         },
         vent: {
             title: "Vent",
             question: "Indiquez la vitesse du vent :",
             infotext: "La présence de vent accélère l’évaporation des gouttes, et augmente l’effet de dérive au moment de la pulvérisation.    <br> <i style='color: darkred'>Attention ! Le vent est supérieur à 19 km/h ? La pulvérisation de pesticide est strictement interdite en Europe et fortement déconseillée ailleurs : le vent fort accentue en effet nettement la dérive et contribue à disperser des composés potentiellement toxiques dans l'environnement !</i>",
-            actions: generate_range_html(0, 19, 10, ' km/h')
+            actions: generate_slider(0, 19, 10, ' km/h')
         },
         durete: {
             title: "Dureté de l'eau",
@@ -172,14 +188,13 @@ $(function () {
 
         feuille: {
             type: "boolean",
+            noeud: "humidite",
             choice_yes: {
-                noeud: "humidite",
                 resultat: function () {
                     cristaux = true;
                 }
             },
             choice_no: {
-                noeud: "humidite",
                 resultat: function () {
                     cristaux = false;
                 }
@@ -187,23 +202,21 @@ $(function () {
         },
         humidite: {
             type: "range",
+            noeud: "temperature",
             choice_low: {
                 reponse: [0, 30],
-                noeud: "temperature",
                 resultat: function () {
                     humidite = 15;
                 }
             },
             choice_middle: {
                 reponse: [31, 70],
-                noeud: "temperature",
                 resultat: function () {
                     humidite = 50;
                 }
             },
             choice_high: {
                 reponse: [71, 100],
-                noeud: "temperature",
                 resultat: function () {
                     humidite = 85;
                 }
@@ -211,17 +224,15 @@ $(function () {
         },
         temperature: {
             type: "range",
+            noeud: "vent",
             choice_high: {
                 reponse: [20, 40],
-                noeud: "vent",
                 resultat: function () {
                     temp_eleve = true;
-
                 }
             },
             choice_low: {
                 reponse: [-20, 20],
-                noeud: "vent",
                 resultat: function () {
                     temp_eleve = false;
                 }
@@ -229,9 +240,10 @@ $(function () {
         },
         vent: {
             type: "range",
+
+            noeud: "ph",
             choice_low: {
                 reponse: [0, 10],
-                noeud: "ph",
                 resultat: function () {
                     vent_fort = false;
 
@@ -239,7 +251,6 @@ $(function () {
             },
             choice_high: {
                 reponse: [10, 19],
-                noeud: "ph",
                 resultat: function () {
                     vent_fort = true;
                 }
@@ -247,16 +258,15 @@ $(function () {
         },
         ph: {
             type: "range",
+            noeud: "durete",
             choice_low: {
                 reponse: [0, 7],
-                noeud: "durete",
                 resultat: function () {
                     low_ph = true;
                 }
             },
             choice_high: {
                 reponse: [7.1, 14],
-                noeud: "durete",
                 resultat: function () {
                     low_ph = false;
                 }
@@ -264,14 +274,13 @@ $(function () {
         },
         durete: {
             type: "boolean",
+            noeud: "pluie",
             choice_yes: {
-                noeud: "pluie",
                 resultat: function () {
                     durete = true;
                 }
             },
             choice_no: {
-                noeud: "pluie",
                 resultat: function () {
                     durete = false;
                 }
@@ -279,14 +288,13 @@ $(function () {
         },
         pluie: {
             type: "boolean",
+            noeud: "cleaner",
             choice_yes: {
-                noeud: "cleaner",
                 resultat: function () {
                     pluie = true;
                 }
             },
             choice_no: {
-                noeud: "cleaner",
                 resultat: function () {
                     pluie = false;
                 }
@@ -294,14 +302,13 @@ $(function () {
         },
         cleaner: {
             type: "boolean",
+            noeud: "duree",
             choice_yes: {
-                noeud: "duree",
                 resultat: function () {
                     cleaner = true;
                 }
             },
             choice_no: {
-                noeud: "duree",
                 resultat: function () {
                     cleaner = false;
                 }
@@ -309,14 +316,13 @@ $(function () {
         },
         duree: {
             type: "boolean",
+            noeud: "END",
             choice_yes: {
-                noeud: "END",
                 resultat: function () {
                     duree_courte = true;
                 }
             },
             choice_no: {
-                noeud: "END",
                 resultat: function () {
                     duree_courte = false;
                 }
@@ -334,21 +340,20 @@ $(function () {
      *
      */
 
-    var go_left = [
-        {
-            transform: 'translate3D(0, 0, 0)',
+    var GO_LEFT = [
+            {
+                transform: 'translate3D(0, 0, 0)',
         },
-        {
-            transform: ' translate3D(' + -2 * $(window).width() + "px" + ' , 0, 0)',
+            {
+                transform: ' translate3D(' + -2 * $(window).width() + "px" + ' , 0, 0)',
         }
-    ];
-
-    var come_right = [
-        {
-            transform: 'translate3D(' + 2 * $(window).width() + "px" + ', 0, 0)',
+    ],
+        COME_RIGHT = [
+            {
+                transform: 'translate3D(' + 2 * $(window).width() + "px" + ', 0, 0)',
         },
-        {
-            transform: ' translate3D(0, 0, 0)',
+            {
+                transform: ' translate3D(0, 0, 0)',
         }
     ];
 
@@ -359,7 +364,7 @@ $(function () {
     }
 
     function show_question(current_node) {
-        document.getElementById("question-card").animate(come_right, cardTiming);
+        document.getElementById("question-card").animate(COME_RIGHT, cardTiming);
     }
 
     function update_question(node) {
@@ -370,7 +375,7 @@ $(function () {
         componentHandler.upgradeDom(); //Update MDL components
         $('#slider_range').on("input change", function () {
             // Change the bottom label for the slider.
-            $("#label_value").html($(this).val()); 
+            $("#label_value").html($(this).val());
         })
         progress += 1;
         bar.animate(progress / 9);
@@ -378,7 +383,7 @@ $(function () {
     }
 
     function hide_question() {
-        document.getElementById("question-card").animate(go_left, cardTiming);
+        document.getElementById("question-card").animate(GO_LEFT, cardTiming);
     }
 
 
@@ -394,7 +399,7 @@ $(function () {
         hide_question();
         setTimeout(function () {
             tree[current_node]["choice_yes"]["resultat"]();
-            current_node = tree[current_node]["choice_yes"]["noeud"];
+            current_node = tree[current_node]["noeud"];
             if (current_node !== "END") {
                 update_question(nodes[current_node]);
                 show_question(current_node);
@@ -408,7 +413,7 @@ $(function () {
         hide_question();
         setTimeout(function () {
             tree[current_node]["choice_no"]["resultat"]();
-            current_node = tree[current_node]["choice_no"]["noeud"];
+            current_node = tree[current_node]["noeud"];
             if (current_node !== "END") {
                 update_question(nodes[current_node]);
                 show_question(current_node);
@@ -424,13 +429,13 @@ $(function () {
             value = $('#slider_range').val();
             if (is_value_in_range(value, tree[current_node]["choice_low"]["reponse"])) {
                 tree[current_node]["choice_low"]["resultat"]();
-                current_node = tree[current_node]["choice_low"]["noeud"];
+                current_node = tree[current_node]["noeud"];
             } else if (is_value_in_range(value, tree[current_node]["choice_high"]["reponse"])) {
                 tree[current_node]["choice_high"]["resultat"]();
-                current_node = tree[current_node]["choice_high"]["noeud"];
+                current_node = tree[current_node]["noeud"];
             } else if (is_value_in_range(value, tree[current_node]["choice_middle"]["reponse"])) {
                 tree[current_node]["choice_middle"]["resultat"]();
-                current_node = tree[current_node]["choice_middle"]["noeud"];
+                current_node = tree[current_node]["noeud"];
             }
             if (current_node !== "END") {
                 update_question(nodes[current_node]);
