@@ -189,7 +189,7 @@ $(function () {
             type: "range",
             choice_low: {
                 reponse: [0, 30],
-                noeud: "ph",
+                noeud: "temperature",
                 resultat: function () {
                     humidite = 15;
                 }
@@ -203,7 +203,7 @@ $(function () {
             },
             choice_high: {
                 reponse: [71, 100],
-                noeud: "ph",
+                noeud: "temperature",
                 resultat: function () {
                     humidite = 85;
                 }
@@ -213,7 +213,7 @@ $(function () {
             type: "range",
             choice_high: {
                 reponse: [20, 40],
-                noeud: "ph",
+                noeud: "vent",
                 resultat: function () {
                     temp_eleve = true;
 
@@ -360,7 +360,6 @@ $(function () {
 
     function show_question(current_node) {
         document.getElementById("question-card").animate(come_right, cardTiming);
-
     }
 
     function update_question(node) {
@@ -394,7 +393,6 @@ $(function () {
     $(document).on('click', '#yes_button', function () {
         hide_question();
         setTimeout(function () {
-
             tree[current_node]["choice_yes"]["resultat"]();
             current_node = tree[current_node]["choice_yes"]["noeud"];
             if (current_node !== "END") {
