@@ -81,3 +81,7 @@ main {
 #label {
     font-weight: bold;
 }
+
+.mdl-slider {
+min-height: 20px;
+}

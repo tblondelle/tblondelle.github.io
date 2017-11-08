@@ -63,40 +63,39 @@ $(function () {
 
         print_debug();
 
-
         if (cristaux) {
             infotext.append("<p>Il vous faut utiliser des surfactants pour que les gouttes s'étalent sur la feuille, et des polymères (comme <b>la molécule polyacrylamide</b>), pour augmenter la viscosité des gouttes, ce qui facilitera leur adhésion. Le <b>LI 700 (De Sangosse)</b> par exemple est constitué d’agents mouillants permettant un bon  étalement des gouttes à la surface des feuilles.  Des produits tels que <b>Adigor (Agridyne)</b> ou <b>Actirob B (Bayer)</b> vous permettront de faciliter la pénétration dans la structure foliaire. </p>");
 
             if (humidite < 30) {
-                infotext.append("<p>Le faible taux d'humidité impose d'ajouter des humectants pour que le produit s'évapore moins vite. </p>");
+                infotext.append("<p>Le faible taux d'humidité impose d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite. </p>");
             } else if (humidite < 70) {
                 if (temp_eleve === false && vent_fort) {
-                    infotext.append("<p>Le faible taux d'humidité et le vent fort imposent d'ajouter des humectants pour que le produit s'évapore moins vite.</p>");
+                    infotext.append("<p>Le faible taux d'humidité et le vent fort imposent d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite.</p>");
                 } else if (temp_eleve){
-                    infotext.append("<p>La forte température impose d'ajouter des humectants pour que le produit s'évapore moins vite. </p>");
+                    infotext.append("<p>La forte température impose d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite. </p>");
                 }
             }
         } else {
             if (humidite < 30){
-                infotext.append("<p>Le climat sec impose d'ajouter des humectants pour que le produit s'évapore moins vite. </p>");
+                infotext.append("<p>Le climat sec impose d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite. </p>");
                 if (vent_fort){
-                    infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift  </p>");
+                    infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou un émulsifiant permettraient d'augmenter le diamètre des gouttes, pour éviter le drift  </p>");
                 }
             } else if (humidite < 70){
                 if (!temp_eleve){
                     if (vent_fort){
-                        infotext.append("<p>Le vent fort impose d'ajouter des humectants pour que le produit s'évapore moins vite. De plus, des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
+                        infotext.append("<p>Le vent fort impose d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite. De plus, des polymères (comme <b>la molécule polyacrylamide</b>) ou un émulsifiant permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
                     }
                 } else {
-                    infotext.append("<p>La forte température impose d'ajouter des humectants pour que le produit s'évapore moins vite. </p>");
+                    infotext.append("<p>La forte température impose d'ajouter des humectants, comme <b>Actimum de De Sangosse</b>, pour que le produit s'évapore moins vite. </p>");
                     
                     if (vent_fort){
-                        infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
+                        infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou un émulsifiant permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
                     }
                 }
             } else {
                 if (vent_fort){
-                    infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou une émulsion permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
+                    infotext.append("<p>Des polymères (comme <b>la molécule polyacrylamide</b>) ou un émulsifiant permettraient d'augmenter le diamètre des gouttes, pour éviter le drift. </p>");
                 }
             }
         }
@@ -133,7 +132,7 @@ $(function () {
             title: "Humidité",
             question: "Indiquez le taux d'humidité local :",
             infotext: "Le taux d’humidité influe sur la volatilisation, c’est-à-dire l’évaporation de l’eau présente dans la bouillie. On cherche à ralentir au maximum la vitesse d’évaporation.",
-            actions: generate_slider(0, 100, 50, '%', 5)
+            actions: generate_slider(0, 100, 50, '%')
         },
         temperature: {
             title: "Température",
@@ -150,7 +149,7 @@ $(function () {
         vent: {
             title: "Vent",
             question: "Indiquez la vitesse du vent :",
-            infotext: "La présence de vent accélère l’évaporation des gouttes, et augmente l’effet de dérive au moment de la pulvérisation.    <br> <i style='color: darkred'>Attention ! Le vent est supérieur à 19 km/h ? La pulvérisation de pesticide est strictement interdite en Europe et fortement déconseillée ailleurs : le vent fort accentue en effet nettement la dérive et contribue à disperser des composés potentiellement toxiques dans l'environnement !</i>",
+            infotext: "La présence de vent accélère l’évaporation des gouttes, et augmente l’effet de dérive au moment de la pulvérisation.    <br> <i style='color: #c53333'>Attention ! Le vent est supérieur à 19 km/h ? La pulvérisation de pesticide est strictement interdite en Europe et fortement déconseillée ailleurs : le vent fort accentue en effet nettement la dérive et contribue à disperser des composés potentiellement toxiques dans l'environnement !</i>",
             actions: generate_slider(0, 19, 10, ' km/h')
         },
         durete: {

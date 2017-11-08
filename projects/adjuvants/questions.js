@@ -132,7 +132,7 @@ $(function () {
             title: "Humidité",
             question: "Indiquez le taux d'humidité local :",
             infotext: "Le taux d’humidité influe sur la volatilisation, c’est-à-dire l’évaporation de l’eau présente dans la bouillie. On cherche à ralentir au maximum la vitesse d’évaporation.",
-            actions: generate_slider(0, 100, 50, '%', 5)
+            actions: generate_slider(0, 100, 50, '%')
         },
         temperature: {
             title: "Température",
@@ -149,7 +149,7 @@ $(function () {
         vent: {
             title: "Vent",
             question: "Indiquez la vitesse du vent :",
-            infotext: "La présence de vent accélère l’évaporation des gouttes, et augmente l’effet de dérive au moment de la pulvérisation.    <br> <i style='color: darkred'>Attention ! Le vent est supérieur à 19 km/h ? La pulvérisation de pesticide est strictement interdite en Europe et fortement déconseillée ailleurs : le vent fort accentue en effet nettement la dérive et contribue à disperser des composés potentiellement toxiques dans l'environnement !</i>",
+            infotext: "La présence de vent accélère l’évaporation des gouttes, et augmente l’effet de dérive au moment de la pulvérisation.    <br> <i style='color: #c53333'>Attention ! Le vent est supérieur à 19 km/h ? La pulvérisation de pesticide est strictement interdite en Europe et fortement déconseillée ailleurs : le vent fort accentue en effet nettement la dérive et contribue à disperser des composés potentiellement toxiques dans l'environnement !</i>",
             actions: generate_slider(0, 19, 10, ' km/h')
         },
         durete: {
