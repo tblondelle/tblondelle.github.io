@@ -128,6 +128,7 @@ code .black {
 .btn-block {
     background-color: #7ea8cc;
     border-color: #2e6da4;
+    color: white;
 }
 
 .btn-block:hover {
