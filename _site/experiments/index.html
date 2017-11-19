@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora|Cinzel">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="icon" type="image/png" href="/images/favicon.PNG">
-    <link rel="canonical" href="http://localhost:4000/experiments/">
-    <link rel="alternate" type="application/rss+xml" title="tblondelle@home" href="http://localhost:4000 /feed.xml ">
+    <link rel="canonical" href="https://tblondelle.github.io/experiments/">
+    <link rel="alternate" type="application/rss+xml" title="tblondelle@home" href="https://tblondelle.github.io /feed.xml ">
 
 </head>
 
@@ -25,8 +25,8 @@
 
     <header class='top-header'>
     <nav>
-      <span class="top-header-link"> <a href="/">&#664;Home</a></span>
-      <span class="top-header-link"> <a href="/posts">Posts</a></span>
+      <span class="top-header-link"> <a href="/">Home</a></span>
+      <!--<span class="top-header-link"> <a href="/posts">Posts</a></span>-->
       <span class="top-header-link"> <a href="/experiments">Experiments</a></span>
       <span class="top-header-link"> <a href="/contact">Contact</a></span>
     </nav>
@@ -44,7 +44,10 @@
   <div class="post-content">
     <div class="post-summary">
 
-	<h3> 1. Authentification <a href="/experiments/authentification"><i class="material-icons">open_in_new</i></a></h3>
+	<h3>1. Authentification</h3>
+    
+    <a href="/experiments/authentification"><img class="thumbnail" src="/images/expe1.png" alt="Screenshot of an authentification process." width="200px" /></a>
+    
 
 	<p>I recently implemented an authentification page for a GitHub Pages website. The tricky part is that you normally need a server to send you the message once the username and password have been accepted. GitHub Pages only offers a static website, thus preventing any dynamic response of private data. </p>
 
@@ -53,34 +56,47 @@
 	<p>The technology I used is the Web Crypto API, which crypts your data directly in JavaScript. <a href="https://www.youtube.com/watch?v=rUi1j1NhGow">This video</a> was useful indeed.</p>
 
 	<p> Try decrypting my implementation and drop me an email if you crack it!</p>
+    
+    <a href="/experiments/authentification" class="btn btn-block">GO AUTHENTIFICATE</a>
 
 </div>
 
 <div class="post-summary">
-	<h3> 2. Notepad online <a href="/experiments/notepad-online"><i class="material-icons">open_in_new</i></a></h3>
+	<h3>2. Notepad online</h3>
 
+    <a href="/experiments/notepad-online"><img class="thumbnail" src="/images/expe2.png" alt="Screenshot of a text editor." width="200px" /></a>
+    
 	<p>Pretending this is actually Notepad++ Online is a bit pretentious for now on. But it could still be useful.</p>
 
 	<p>I am not the first one inventing the concept: <a href="http://www.rapidtables.com/tools/notepad.htm">rapidtables.com</a> provides a similar tool with more options, as well as <a href="http://www.mytextarea.com/">mytextarea.com</a>. </p>
 
 	<p>I have added the "automatically saved" option.</p>
+    
+    <a href="/experiments/notepad-online" class="btn btn-block">GO WRITE!</a>
 
 </div>
 
 <div class="post-summary">
-	<h3> 3. Chess (17/10/05) <a href="/experiments/chess"><i class="material-icons">open_in_new</i></a></h3>
+	<h3>3. Chess (17/10/05)</h3>
+    
+     <a href="/experiments/chess"><img class="thumbnail" src="/images/expe3.png" alt="Screenshot of a chess app." width="200px" /></a>
 
 	<p>It is harder than you would think to find a simple chess game online, without ads and countless scripts. I then wrote mine with the great help of  <a href="http://chessboardjs.com">chessboardjs</a>.</p>
 
     <p>The "autosave" is activated. Further modifications are to be added but the point here is just being able to play...</p>
     
     <p>(17/10/09) I have added a Redo option as well as the possiblity to save and upload the whole game.</p>
+    
+    <a href="/experiments/chess" class="btn btn-block">PLAY CHESS!</a>
 </div>
-
-<div class="center logo_site">-- &#664; --</div>
 
 
   </div>
+    
+  <div class="center logo_site">- <img 
+    src="/images/symbole.svg" 
+    alt="Logo"
+    width="50px" /> -</div>
 
 </article>
 

@@ -68,7 +68,12 @@ h1 {
 * Top Header.
 */
 .top-header {
-    background-color: black;
+    
+    background-color: #A23E48;
+    background: -webkit-linear-gradient(right, #A23E48, #FF8C42); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #A23E48, #FF8C42); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #A23E48, #FF8C42); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #A23E48, #FF8C42);
     color: white;
     padding: 15px 0;
     width: 100%;
@@ -100,7 +105,7 @@ code .black {
 
 
 .post-summary {
-    margin: 25px 0;
+    margin: 45px 0;
 }
 
 .post-summary h3 {
@@ -120,6 +125,20 @@ code .black {
     font-family: Helvetica, sans-serif;
 }
 
+.btn-block {
+    background-color: #7ea8cc;
+    border-color: #2e6da4;
+}
+
+.btn-block:hover {
+    background-color: #699fce;
+    border-color: #2e6da4;
+}
+
+.btn-block:visited{
+    color: white;
+}
+
 .logo_site{
     font-size: 50px;
     padding: 20px;
@@ -128,3 +147,15 @@ code .black {
 .page-content {
     padding-bottom: 0;
 }
+
+
+.thumbnail {
+    float: left;
+    padding: 0;
+    margin-bottom: 3px;
+    margin-right: 10px;
+    border-width: 3px;
+    border-color: #337ab7;
+}
+
+

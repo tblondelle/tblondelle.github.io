@@ -20,6 +20,3 @@ You can contact me at <code>thomas.blondelle@gmail.com</code>, see my GitHub pag
        <span>@tblondelle</span>
    </a>
 </div>
-
-
-<div class="center logo_site">-- &#664; --</div>
