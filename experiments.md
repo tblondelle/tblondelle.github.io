@@ -57,3 +57,12 @@ permalink: /experiments/
 </div>
 
 
+<div class="post-summary">
+	<h3>4. Colors names</h3>
+	
+	<p>Hopefully an exhaustive list of color names (in French).</p>
+    
+    <a href="{{site.github.url}}/experiments/colornames" class="btn btn-block">READ COLORS!</a>
+
+</div>
+
