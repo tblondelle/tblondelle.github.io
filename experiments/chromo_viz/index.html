@@ -1,0 +1,220 @@
+<!doctype html>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <header class="page-header">
+
+    <div class="header-base">
+      <a href="/" aria-label="Retour à l’accueil">
+        <img src="/images/favicon.PNG" alt="Accueil" class="home-button">
+      </a>
+
+      <h1>Chromo Viz</h1>
+    </div>
+
+    <div class="header-actions">
+
+      <input id="csv-file" type="file" accept=".csv,text/csv" hidden>
+
+      <button id="load-csv" class="round-button" type="button" aria-label="Charger un fichier CSV"
+        title="Charger un fichier CSV">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
+          <path
+            d="M440-200h80v-167l64 64 56-57-160-160-160 160 57 56 63-63v167ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z" />
+        </svg>
+      </button>
+
+      <button id="export-svg" class="round-button" type="button" title="Sauvegarder en SVG">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
+          <path
+            d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
+        </svg>
+      </button>
+
+    </div>
+  </header>
+
+  <div class="content">
+
+    <div class="settings">
+
+      <label>
+        Espace entre les blocs :
+        <input id="gap" type="range" min="0" max="5" value="1" step="0.05">
+        <span id="gap-value">1</span>
+      </label>
+
+      <br>
+
+      <label>
+        Hauteur des barres :
+        <input id="bar-height" type="range" min="5" max="40" value="14" step="0.25">
+        <span id="height-value">14</span>
+      </label>
+
+      <br>
+
+      <label>
+        Espace entre les lignes :
+        <input id="row-gap" type="range" min="0" max="100" value="14" step="0.5">
+        <span id="row-gap-value">14</span>
+      </label>
+
+    </div>
+
+    <div id="chart"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script>
+
+    const width = 500;
+    const margin = { top: 10, right: 10, bottom: 10, left: 10 };
+
+    let groups = [];
+
+    const fileInput = document.querySelector("#csv-file");
+    const gapInput = document.querySelector("#gap");
+    const heightInput = document.querySelector("#bar-height");
+    const rowGapInput = document.querySelector("#row-gap");
+
+    function draw() {
+
+      if (groups.length === 0) return;
+
+      const gap = +gapInput.value;
+      const barHeight = +heightInput.value;
+      const rowGap = +rowGapInput.value;
+
+      document.querySelector("#gap-value").textContent = gap;
+      document.querySelector("#height-value").textContent = barHeight;
+      document.querySelector("#row-gap-value").textContent = rowGap;
+
+      const maxTotal = d3.max(groups, ([, blocks]) =>
+        d3.sum(blocks, d => d.size) + gap * (blocks.length - 1)
+      );
+
+      const x = d3.scaleLinear()
+        .domain([0, maxTotal || 1])
+        .range([0, width - margin.left - margin.right]);
+
+      const height = margin.top + margin.bottom
+        + groups.length * (barHeight + rowGap) - rowGap;
+
+      const svg = d3.select("#chart")
+        .selectAll("svg")
+        .data([null])
+        .join("svg")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .style("max-width", "100%")
+        .style("height", "auto");
+
+      svg.selectAll("*").remove();
+
+      groups.forEach(([chromosome, blocks], row) => {
+        let offset = 0;
+        const y = margin.top + row * (barHeight + rowGap);
+
+        blocks.forEach((block, i) => {
+          svg.append("rect")
+            .attr("x", margin.left + x(offset))
+            .attr("y", y)
+            .attr("width", x(block.size))
+            .attr("height", barHeight)
+            .attr("fill", block.color)
+            .append("title")
+            .text(`Chromosome ${chromosome} — taille : ${block.size}`);
+
+          offset += block.size + (i < blocks.length - 1 ? gap : 0);
+        });
+      });
+    }
+
+
+    function loadCsvText(text) {
+      const data = d3.dsvFormat(";").parse(text, d => ({
+        chromosome: Number(d.chromosome_number),
+        size: Number(d.size),
+        color: d.color.startsWith("#") ? d.color : `#${d.color}`
+      }));
+
+      groups = d3.groups(data, d => d.chromosome)
+        .sort(([a], [b]) => d3.ascending(a, b));
+
+      draw();
+    }
+
+    fileInput.addEventListener("change", async event => {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      try {
+        loadCsvText(await file.text());
+      } catch (error) {
+        console.error("Impossible de lire le CSV :", error);
+        alert("Le fichier CSV n’a pas pu être lu.");
+      }
+    });
+
+
+    d3.dsv(";", "data.csv", d => ({
+      chromosome: +d.chromosome_number,
+      size: +d.size,
+      color: d.color.startsWith("#") ? d.color : `#${d.color}`
+    })).then(data => {
+      const groups = d3.groups(data, d => d.chromosome)
+        .sort(([a], [b]) => d3.ascending(a, b));
+
+      gapInput.addEventListener("input", draw);
+      heightInput.addEventListener("input", draw);
+      rowGapInput.addEventListener("input", draw);
+      draw();
+    });
+
+    fetch("data.csv")
+      .then(response => {
+        if (!response.ok) throw new Error(`Erreur HTTP : ${response.status}`);
+        return response.text();
+      })
+      .then(loadCsvText)
+      .catch(error => {
+        console.error("Impossible de charger data.csv :", error);
+        alert("Le fichier data.csv par défaut n’a pas pu être chargé.");
+      });
+
+
+    document.querySelector("#export-svg").addEventListener("click", () => {
+      const svg = document.querySelector("#chart svg");
+
+      if (!svg) {
+        alert("Aucun graphe à exporter.");
+        return;
+      }
+
+      const contenu = new XMLSerializer().serializeToString(svg);
+      const blob = new Blob([contenu], {
+        type: "image/svg+xml;charset=utf-8"
+      });
+
+      const url = URL.createObjectURL(blob);
+      const lien = document.createElement("a");
+      lien.href = url;
+      lien.download = "graphe.svg";
+      lien.click();
+
+      URL.revokeObjectURL(url);
+    });
+
+  </script>
+  <script>
+    document.querySelector("#load-csv").addEventListener("click", () => {
+      fileInput.click();
+    });
+  </script>
+
+</body>
