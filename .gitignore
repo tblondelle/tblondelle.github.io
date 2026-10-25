@@ -1,0 +1,7 @@
+# Fichiers générés par Jekyll
+_site/
+.jekyll-cache/
+.sass-cache/
+
+# Environnement Python local
+.venv/
