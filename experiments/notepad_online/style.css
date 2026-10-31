@@ -29,9 +29,6 @@ body {
     background-color: #333333;
 }
 
-#escape_button {
-}
-
 .colorhere {
     font-family: monospace;
     font-size: 14px;
@@ -59,7 +56,7 @@ body {
     outline: none;
     border: 0;
     resize: none;
-    background-color: transparent; /*transparent*/ 
+    background-color: transparent; /*transparent*/
     /*z-index: 1;*/
     line-height: 20px;
     color: black; /*transparent*/
