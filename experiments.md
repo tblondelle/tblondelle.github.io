@@ -73,7 +73,7 @@ permalink: /experiments/
 
 	<p>So that chromosomes can be displayed in a block format</p>
 
-    <a href="{{site.github.url}}/chromo_viz/src/server/static/index.html" class="btn btn-block">Go</a>
+    <a href="{{site.github.url}}/chromo_viz" class="btn btn-block">Go</a>
 
 </div>
 
